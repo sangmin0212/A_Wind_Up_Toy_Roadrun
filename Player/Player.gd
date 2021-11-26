@@ -2,61 +2,42 @@ extends KinematicBody2D
 
 class_name player
 
+# move
 var velocity = Vector2(1,0)
 var speed = 200
+# rotate
+var reflect_angle = 0
 var isturn = false
 var i = 0
-#var rotation_speed = PI/64
-#var rotation_direction = 1
-#var turnLeft = false
-#var turnRight = false
-#var turnNum = 0
-
+# life
 var life = 3
 
 func _physics_process(delta):
 	# player move itself
-
 	velocity = velocity.normalized() * speed
 	var collision = move_and_collide(velocity*delta)
 
-	#look_at(get_global_mouse_position())
-	if isturn and i < 18:
-		rotation_degrees += 5
-		i+= 1
-		
+	# turn the player based on reflect_angle
+	if i < 10 and isturn:
+		print(reflect_angle)
+		rotate(reflect_angle)
+		i += 1
+		if i == 10:
+			i = 0
+			isturn = false
+	
 	# if wind-up toy collide with wall, change move direction
 	if collision:
 		var reflect = collision.remainder.bounce(collision.normal)
-		velocity = velocity.bounce(collision.normal)
-		print(reflect)
-		
-		# reflect 백터값 파악해서 tureleft, turnright할지 결정하기
-		# rotation_direction = left : -1, right : 1
-		# rotation_speed(PI)를 점점 더해야 겠다.		
-		move_and_collide(reflect)
+		# calculate reflect_angle(using 2 vector). using rotate in _physics_process for rotate smootly
+		reflect_angle = velocity.angle_to(reflect)
+		reflect_angle = reflect_angle/10
 		isturn = true
-		i = 0
+		# move base on bounce vector
+		velocity = velocity.bounce(collision.normal)
+		move_and_collide(reflect)
 		
 	# speed will be decreased if you want to charge it, eat battery	
+	# 5초 정도는 full charging으로 갈 수 있게
 	if speed > 0:
 		speed -= 0.2
-
-##func determineTurn(direction):
-#	if direction.x >= -0.25 and direction.x <= 0.25 and direction.y >= -0.25 and direction.y <= 0.25:
-#		return 1
-#	if direction.x >= 0.25 and direction.x <= 0.75 and direction.y >= 0.25 and direction.y <= 0.75:
-#		return 2
-#	if direction.x >= 0.5 and direction.x <= 0.25 and direction.y >= -0.25 and direction.y <= 0.25:
-#		return 3
-#	if direction.x >= -0.25 and direction.x <= 0.25 and direction.y >= -0.25 and direction.y <= 0.25:
-#		return 4
-#	if direction.x >= -0.25 and direction.x <= 0.25 and direction.y >= -0.25 and direction.y <= 0.25:
-#		return 5
-#	if direction.x >= -0.25 and direction.x <= 0.25 and direction.y >= -0.25 and direction.y <= 0.25:
-#		return 6
-#	if direction.x >= -0.25 and direction.x <= 0.25 and direction.y >= -0.25 and direction.y <= 0.25:
-#		return 7
-#	if direction.x >= -0.25 and direction.x <= 0.25 and direction.y >= -0.25 and direction.y <= 0.25:
-#		return 8
-		

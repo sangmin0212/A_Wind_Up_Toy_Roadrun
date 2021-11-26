@@ -34,12 +34,12 @@ collision_layer = 2
 
 [node name="Wall" parent="Walls" instance=ExtResource( 2 )]
 position = Vector2( 640, 160 )
-rotation = 0.785398
+rotation = 0.523598
 scale = Vector2( 0.8, 0.5 )
 collision_layer = 2
 
 [node name="Wall2" parent="Walls" instance=ExtResource( 2 )]
-position = Vector2( 640, 440 )
+position = Vector2( 597.574, 488.083 )
 rotation = 2.35619
 scale = Vector2( 0.8, 0.5 )
 collision_layer = 2

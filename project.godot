@@ -24,6 +24,11 @@ config/name="A_Wind_Up_Toy_Roadrun"
 run/main_scene="res://Sangmin_Test.tscn"
 config/icon="res://Player/icon.png"
 
+[display]
+
+window/size/width=720
+window/size/height=1080
+
 [layer_names]
 
 2d_physics/layer_1="player"
