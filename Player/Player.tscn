@@ -1,18 +1,17 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Player/icon.png" type="Texture" id=1]
-[ext_resource path="res://Player/Player.gd" type="Script" id=2]
+[ext_resource path="res://Player/PlayerManager.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 6.88939, 15.1464 )
+extents = Vector2( 31.6962, 32.2475 )
 
 [node name="Player" type="KinematicBody2D"]
-collision_mask = 2
+collision_mask = 6
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 rotation = 1.5708
-scale = Vector2( 5, 5 )
 texture = ExtResource( 1 )
 flip_h = true
 

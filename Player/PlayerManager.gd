@@ -1,10 +1,10 @@
 extends KinematicBody2D
 
-class_name player
+class_name PlayerManager
 
 # move
 var velocity = Vector2(1,0)
-var speed = 200
+var speed = 0
 # rotate
 var reflect_angle = 0
 var isturn = false
@@ -14,17 +14,26 @@ var is_battery_work = true
 var life = 3
 var timer
 
+var monster = preload("res://Monster/Monster.tscn")
+
+func _init(_position = Vector2(0,0)):
+	position = _position
+
 func _ready():
 	# set timer. After 10 second, player's speed will be decreased
 	timer= Timer.new()
 	add_child(timer)
 	timer.connect("timeout",self,"_on_timeout")
+	
+func start():
+	speed = 200
 	timer.set_wait_time(10)
 	timer.start()
 
-
 func _physics_process(delta):
 	# player move itself
+	if speed == 0:
+		return
 	velocity = velocity.normalized() * speed
 	var collision = move_and_collide(velocity*delta)
 
@@ -42,6 +51,7 @@ func _physics_process(delta):
 		# calculate reflect_angle(using 2 vector). using rotate in _physics_process for rotate smootly
 		reflect_angle = velocity.angle_to(reflect)
 		reflect_angle = reflect_angle/10
+		print(reflect_angle)
 		isturn = true
 		# move base on bounce vector
 		velocity = velocity.bounce(collision.normal)
@@ -64,4 +74,10 @@ func _on_timeout():
 func _input(event):
 	if Input.is_action_pressed("ui_up"):
 			charge()
-			
+
+func booster():
+	# 5초간 속도 2배로 증가
+	pass
+	
+func looseLife():
+	print("아파")

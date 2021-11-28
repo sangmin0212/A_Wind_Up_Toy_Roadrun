@@ -9,13 +9,25 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "KinematicBody2D",
-"class": "player",
+"base": "Node",
+"class": "GameManager",
 "language": "GDScript",
-"path": "res://Player/Player.gd"
+"path": "res://GameManager.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Monster",
+"language": "GDScript",
+"path": "res://Monster/Monster.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "PlayerManager",
+"language": "GDScript",
+"path": "res://Player/PlayerManager.gd"
 } ]
 _global_script_class_icons={
-"player": ""
+"GameManager": "",
+"Monster": "",
+"PlayerManager": ""
 }
 
 [application]
