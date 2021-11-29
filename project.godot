@@ -41,11 +41,18 @@ config/icon="res://Player/icon.png"
 window/size/width=720
 window/size/height=1080
 
+[global]
+
+window=false
+
 [layer_names]
 
 2d_physics/layer_1="player"
 2d_physics/layer_2="wall"
 2d_physics/layer_3="eneimes"
+2d_physics/layer_4="battery"
+2d_physics/layer_5="booster"
+2d_physics/layer_6="bomb"
 
 [physics]
 

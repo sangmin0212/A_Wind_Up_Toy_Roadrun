@@ -2,33 +2,36 @@ extends KinematicBody2D
 
 class_name PlayerManager
 
-# move
+onready var gameManager = find_parent("GameManager")
+
+# Move and Rotate
 var velocity = Vector2(1,0)
 var speed = 0
-# rotate
 var reflect_angle = 0
 var isturn = false
 var i = 0
-# battery and life
+# Item
 var is_battery_work = true
-var life = 3
-var timer
+var batteryTimer
+var boosterTimer
 
-var monster = preload("res://Monster/Monster.tscn")
 
 func _init(_position = Vector2(0,0)):
 	position = _position
 
 func _ready():
 	# set timer. After 10 second, player's speed will be decreased
-	timer= Timer.new()
-	add_child(timer)
-	timer.connect("timeout",self,"_on_timeout")
-	
-func start():
+	batteryTimer = create_timer("battery_cooltime",10)
+	boosterTimer = create_timer("booster_cooltime", 5)
+
+func game_start():
 	speed = 200
-	timer.set_wait_time(10)
-	timer.start()
+	batteryTimer.set_wait_time(10)
+	batteryTimer.start()
+
+func game_over():
+	speed = 0
+	# 추가 : dead effect, dead sound
 
 func _physics_process(delta):
 	# player move itself
@@ -39,19 +42,19 @@ func _physics_process(delta):
 
 	# turn the player based on reflect_angle
 	if i < 10 and isturn:
-		rotate(reflect_angle)
+		rotate(reflect_angle/10)
 		i += 1
 		if i == 10:
 			i = 0
 			isturn = false
 	
 	# if wind-up toy collide with wall, change move direction
+	# 추가 : reflect sound 
 	if collision:
 		var reflect = collision.remainder.bounce(collision.normal)
 		# calculate reflect_angle(using 2 vector). using rotate in _physics_process for rotate smootly
 		reflect_angle = velocity.angle_to(reflect)
-		reflect_angle = reflect_angle/10
-		print(reflect_angle)
+		# if reflect_angle is 3.14159...(180 degree) it didn't change well
 		isturn = true
 		# move base on bounce vector
 		velocity = velocity.bounce(collision.normal)
@@ -59,25 +62,54 @@ func _physics_process(delta):
 		
 	# speed will be decreased if you want to charge it, eat battery	
 	if !is_battery_work and speed >= 0:
-		speed -= 1
-		
-func charge():
-	timer.start()
+		# 추가 : battery low sound
+		speed -= 2
+		if speed <= 0:
+			speed = 0
+			
+	if collision.collider.get_collision_layer_bit(3):
+		battery()		
+	
+	if collision.collider.get_collision_layer_bit(4):
+		booster()
+
+	if collision.collider.get_collision_layer_bit(5):
+		gameManager.is_gameOver()
+
+	
+# Item
+func battery():
+	# 추가 : baatery sound
 	is_battery_work = true
 	speed = 200	
-
-func _on_timeout():
-	print("The battery is dead!")
-	is_battery_work = false
-
-#임시 코드 for battery charging
-func _input(event):
-	if Input.is_action_pressed("ui_up"):
-			charge()
+	batteryTimer.start()
 
 func booster():
-	# 5초간 속도 2배로 증가
-	pass
+	# 추가 : booster sound
+	speed = 400
+	boosterTimer.set_wait_time(5)
+	boosterTimer.start()
+
+# Item timer
+func battery_cooltime():
+	print("The battery is dead!")
+	is_battery_work = false
 	
-func looseLife():
-	print("아파")
+func booster_cooltime():
+	speed = 200
+
+# make timer 
+# https://godotengine.org/qa/46078/perhaps-a-second-timer
+func create_timer (item_func, item_time) -> Timer:
+	var timer = Timer.new()    
+	add_child (timer)
+	timer.set_wait_time (item_time)
+	timer.connect("timeout", self, item_func)
+	return timer
+	
+#임시 치트키
+func _input(event):
+	if Input.is_action_pressed("ui_up"):
+			battery()
+	if Input.is_action_pressed("ui_down"):
+			booster()
