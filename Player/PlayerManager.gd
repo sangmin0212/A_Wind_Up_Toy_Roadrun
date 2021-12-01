@@ -9,6 +9,8 @@ var velocity = Vector2(1,0)
 var speed = 0
 var reflect_angle = 0
 var isturn = false
+var collisionTimer
+var canCollision = true
 var i = 0
 # Item
 var is_battery_work = true
@@ -21,6 +23,7 @@ func _init(_position = Vector2(0,0)):
 
 func _ready():
 	# set timer. After 10 second, player's speed will be decreased
+	collisionTimer = create_timer("collision_cooltime", 0.1)
 	batteryTimer = create_timer("battery_cooltime",10)
 	boosterTimer = create_timer("booster_cooltime", 5)
 
@@ -50,10 +53,13 @@ func _physics_process(delta):
 	
 	# if wind-up toy collide with wall, change move direction
 	# 추가 : reflect sound 
-	if collision:
+	if collision and canCollision:
+		collisionTimer.start()
+		canCollision = false
 		var reflect = collision.remainder.bounce(collision.normal)
 		# calculate reflect_angle(using 2 vector). using rotate in _physics_process for rotate smootly
 		reflect_angle = velocity.angle_to(reflect)
+		print(reflect_angle)
 		# if reflect_angle is 3.14159...(180 degree) it didn't change well
 		isturn = true
 		# move base on bounce vector
@@ -66,16 +72,9 @@ func _physics_process(delta):
 		speed -= 2
 		if speed <= 0:
 			speed = 0
-			
-	if collision.collider.get_collision_layer_bit(3):
-		battery()		
-	
-	if collision.collider.get_collision_layer_bit(4):
-		booster()
 
-	if collision.collider.get_collision_layer_bit(5):
-		gameManager.is_gameOver()
-
+func collision_cooltime():
+	canCollision = true
 	
 # Item
 func battery():
