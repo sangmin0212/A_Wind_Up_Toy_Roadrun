@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Wall/Wall_Rotating.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 56.6926, 10.8351 )
+
+[node name="Wall_Rotation" type="StaticBody2D"]
+position = Vector2( 80.5, 39.25 )
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2( -0.686691, -0.255577 )
+polygon = PoolVector2Array( -55.9637, -10.5683, 57.3966, -10.5538, 57.406, 11.0485, -55.9919, 11.0708 )

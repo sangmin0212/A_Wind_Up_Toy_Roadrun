@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://GameManager.gd" type="Script" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Wall/Wall.tscn" type="PackedScene" id=3]
 [ext_resource path="res://MonsterManager.gd" type="Script" id=4]
+[ext_resource path="res://Wall/Wall_Rotating.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Wall/Wall_Moving.tscn" type="PackedScene" id=6]
 
 [node name="RoadRun_Stage1" type="Node2D"]
 
@@ -27,7 +29,7 @@ collision_mask = 5
 
 [node name="wall2" parent="Wall" instance=ExtResource( 3 )]
 position = Vector2( 631, 100 )
-rotation = 1.57079
+rotation = 0.785397
 collision_layer = 2
 collision_mask = 5
 
@@ -42,5 +44,14 @@ position = Vector2( 83, 950 )
 rotation = 0.785398
 collision_layer = 2
 collision_mask = 5
+
+[node name="Wall_Rotation" parent="Wall" instance=ExtResource( 5 )]
+position = Vector2( 576.44, 503.725 )
+scale = Vector2( 2, 2 )
+collision_layer = 2
+collision_mask = 4
+
+[node name="Wall_Moving" parent="Wall" instance=ExtResource( 6 )]
+position = Vector2( 289.595, 503.725 )
 
 [connection signal="spawn_monster" from="GameManager" to="GameManager/MonsterManager" method="_on_GameManager_spawn_monster"]
