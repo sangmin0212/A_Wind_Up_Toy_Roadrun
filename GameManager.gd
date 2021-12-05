@@ -34,15 +34,10 @@ func game_start():
 		# to spawn monster, start monster timer
 		start_monster_timer()
 		
-func is_gameOver():
-	gameOver = true
+func game_over():
+	playerManager.game_over()
+	monsterTimer.stop()
 
-func _process(delta):
-	if gameOver:
-		playerManager.game_over()
-		monsterTimer.stop()
-		# 메뉴창으로 돌아가기?
-		# gameOver UI
 	
 func start_monster_timer():
 	# spawn monster
@@ -53,6 +48,7 @@ func start_monster_timer():
 func spawn_monster():
 	isSpawnMonster = true
 	emit_signal("spawn_monster", playerPos, playerVelocity)
+
 
 # make timer 
 # https://godotengine.org/qa/46078/perhaps-a-second-timer

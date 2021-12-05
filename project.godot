@@ -33,7 +33,7 @@ _global_script_class_icons={
 [application]
 
 config/name="A_Wind_Up_Toy_Roadrun"
-run/main_scene="res://Sangmin_Test.tscn"
+run/main_scene="res://GameManager.tscn"
 config/icon="res://Player/icon.png"
 
 [display]

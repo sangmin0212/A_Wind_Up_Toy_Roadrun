@@ -22,3 +22,5 @@ rotate = false
 [node name="Wall" parent="WallPath/PathFollow2D" instance=ExtResource( 1 )]
 position = Vector2( 121.751, -0.970287 )
 rotation = -0.0059222
+collision_layer = 2
+collision_mask = 5
