@@ -58,3 +58,4 @@ func create_timer (item_func, item_time) -> Timer:
 	timer.set_wait_time (item_time)
 	timer.connect("timeout", self, item_func) 
 	return timer
+

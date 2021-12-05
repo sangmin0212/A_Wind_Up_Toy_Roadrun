@@ -9,6 +9,21 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Area2D",
+"class": "Battery",
+"language": "GDScript",
+"path": "res://Item/Battery.gd"
+}, {
+"base": "Area2D",
+"class": "Bomb",
+"language": "GDScript",
+"path": "res://Item/Bomb.gd"
+}, {
+"base": "Area2D",
+"class": "Booster",
+"language": "GDScript",
+"path": "res://Item/Booster.gd"
+}, {
 "base": "Node",
 "class": "GameManager",
 "language": "GDScript",
@@ -25,6 +40,9 @@ _global_script_classes=[ {
 "path": "res://Player/PlayerManager.gd"
 } ]
 _global_script_class_icons={
+"Battery": "",
+"Bomb": "",
+"Booster": "",
 "GameManager": "",
 "Monster": "",
 "PlayerManager": ""

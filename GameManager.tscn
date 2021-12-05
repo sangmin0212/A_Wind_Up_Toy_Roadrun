@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://GameManager.gd" type="Script" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -6,6 +6,12 @@
 [ext_resource path="res://MonsterManager.gd" type="Script" id=4]
 [ext_resource path="res://Wall/Wall_Rotating.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Wall/Wall_Moving.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Item/Battery.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Item/Booster.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Item/Bomb.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Item/Battery.gd" type="Script" id=10]
+[ext_resource path="res://Item/Booster.gd" type="Script" id=11]
+[ext_resource path="res://Item/Bomb.gd" type="Script" id=12]
 
 [node name="RoadRun_Stage1" type="Node2D"]
 
@@ -60,4 +66,23 @@ collision_mask = 4
 [node name="Wall_Moving" parent="Wall" instance=ExtResource( 6 )]
 position = Vector2( 354.617, 494.475 )
 
+[node name="Item" type="Node2D" parent="."]
+
+[node name="Battery" parent="Item" instance=ExtResource( 7 )]
+position = Vector2( 596, 110 )
+script = ExtResource( 10 )
+
+[node name="Bomb" parent="Item" instance=ExtResource( 9 )]
+position = Vector2( 896, 546 )
+script = ExtResource( 12 )
+
+[node name="Booster" parent="Item" instance=ExtResource( 8 )]
+position = Vector2( 870, 114 )
+script = ExtResource( 11 )
+
 [connection signal="spawn_monster" from="GameManager" to="GameManager/MonsterManager" method="_on_GameManager_spawn_monster"]
+[connection signal="body_entered" from="Item/Battery" to="GameManager/Player" method="_on_Battery_body_entered"]
+[connection signal="body_entered" from="Item/Battery" to="Item/Battery" method="_on_Battery_body_entered"]
+[connection signal="body_entered" from="Item/Bomb" to="Item/Bomb" method="_on_Bomb_body_entered"]
+[connection signal="body_entered" from="Item/Booster" to="GameManager/Player" method="_on_Booster_body_entered"]
+[connection signal="body_entered" from="Item/Booster" to="Item/Booster" method="_on_Booster_body_entered"]

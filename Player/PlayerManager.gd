@@ -8,6 +8,8 @@ var gameOver = false
 # Move and Rotate
 var velocity = Vector2(1,0)
 var speed = 0
+var speedInitial = 200
+var speedMax = 400
 var reflect_angle = 0
 var isturn = false
 var collisionTimer
@@ -17,6 +19,7 @@ var i = 0
 var is_battery_work = true
 var batteryTimer
 var boosterTimer
+var isBooster = false
 
 onready var _animation_player = $AnimationPlayer
 var state = "Stop"
@@ -74,6 +77,22 @@ func _physics_process(delta):
 		# move base on bounce vector
 		velocity = velocity.bounce(collision.normal)
 		move_and_collide(reflect)
+		
+	
+	# 1205 효연 추가
+	speed -= 10 * delta
+	
+	if speed <= 0:
+		print("Player died!!!")
+		get_tree().paused = true
+	
+	if isBooster and speed > 200:
+		speed -= 50 * delta
+		if speed <= speedInitial:
+			speed = speedInitial
+			isBooster = false
+	
+
 
 # Item
 func _battery():
@@ -95,7 +114,8 @@ func _booster():
 	state = "Idle"
 	
 # Item timer
-func battery_cooltime():
+# cooltime이랑 지속시간이랑 헷갈린 거 같아서 함수 이름 수정했어.
+func battery_time():
 	while speed > 0:
 		yield(get_tree().create_timer(0.2),"timeout")
 		speed -= 10
@@ -103,12 +123,13 @@ func battery_cooltime():
 			speed = 0
 			state = "Stop"
 	
-func booster_cooltime():
+func booster_time():
 	while speed > 200:
 		yield(get_tree().create_timer(0.2),"timeout")
 		speed -= 20
 		if speed <= 200:
 			speed = 200
+	
 	
 func collision_cooltime():
 	canCollision = true
@@ -128,9 +149,29 @@ func create_timer (item_func, item_time) -> Timer:
 	timer.connect("timeout", self, item_func)
 	return timer
 	
-#임시 치트키
-func _input(event):
-	if Input.is_action_pressed("ui_up"):
-			_battery()
-	if Input.is_action_pressed("ui_down"):
-			_booster()
+##임시 치트키
+#func _input(event):
+#	if Input.is_action_pressed("ui_up"):
+#			_battery()
+#	if Input.is_action_pressed("ui_down"):
+#			_booster()
+
+
+# 1205 효연 추가
+func take_speed(amount):
+	speed += amount
+	if speed > speedMax:
+		speed = speedMax
+	print("player picked a battery! Current speed is: ", speed)
+
+
+func _on_Battery_body_entered(body):
+	take_speed(60)
+
+
+func _on_Booster_body_entered(body):
+	isBooster = true
+	
+	speed = 400
+	print("current speed: ", speed)
+	print("player picked a booster!")
