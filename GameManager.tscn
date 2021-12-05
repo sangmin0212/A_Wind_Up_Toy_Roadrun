@@ -28,30 +28,30 @@ collision_layer = 2
 collision_mask = 5
 
 [node name="wall2" parent="Wall" instance=ExtResource( 3 )]
-position = Vector2( 631, 100 )
+position = Vector2( 948.068, 100 )
 rotation = 0.785397
 collision_layer = 2
 collision_mask = 5
 
 [node name="wall3" parent="Wall" instance=ExtResource( 3 )]
-position = Vector2( 631, 950 )
+position = Vector2( 948.068, 582.201 )
 rotation = -0.785398
 collision_layer = 2
 collision_mask = 5
 
 [node name="wall4" parent="Wall" instance=ExtResource( 3 )]
-position = Vector2( 83, 950 )
+position = Vector2( 83, 582.201 )
 rotation = 0.785398
 collision_layer = 2
 collision_mask = 5
 
 [node name="Wall_Rotation" parent="Wall" instance=ExtResource( 5 )]
-position = Vector2( 147.659, 503.725 )
+position = Vector2( 354.617, 203.567 )
 scale = Vector2( 2, 2 )
 collision_layer = 2
 collision_mask = 4
 
 [node name="Wall_Moving" parent="Wall" instance=ExtResource( 6 )]
-position = Vector2( 354.698, 815.77 )
+position = Vector2( 354.617, 494.475 )
 
 [connection signal="spawn_monster" from="GameManager" to="GameManager/MonsterManager" method="_on_GameManager_spawn_monster"]
