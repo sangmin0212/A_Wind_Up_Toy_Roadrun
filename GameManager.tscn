@@ -20,39 +20,33 @@ script = ExtResource( 1 )
 
 [node name="Player" parent="GameManager" instance=ExtResource( 2 )]
 pause_mode = 2
-position = Vector2( 200, 100 )
+position = Vector2( 270.635, 100 )
 
 [node name="MonsterManager" type="Node2D" parent="GameManager"]
 script = ExtResource( 4 )
 
 [node name="Wall" type="Node2D" parent="."]
 
-[node name="wall1" parent="Wall" instance=ExtResource( 3 )]
-position = Vector2( 83, 100 )
-rotation = -0.785398
-collision_layer = 2
-collision_mask = 5
-
 [node name="wall5" parent="Wall" instance=ExtResource( 3 )]
-position = Vector2( 83, 100 )
+position = Vector2( 113.272, 100 )
 rotation = -0.785398
 collision_layer = 2
 collision_mask = 5
 
 [node name="wall2" parent="Wall" instance=ExtResource( 3 )]
-position = Vector2( 948.068, 100 )
+position = Vector2( 1161.66, 100 )
 rotation = 0.785397
 collision_layer = 2
 collision_mask = 5
 
 [node name="wall3" parent="Wall" instance=ExtResource( 3 )]
-position = Vector2( 948.068, 582.201 )
+position = Vector2( 1161.66, 582.201 )
 rotation = -0.785398
 collision_layer = 2
 collision_mask = 5
 
 [node name="wall4" parent="Wall" instance=ExtResource( 3 )]
-position = Vector2( 83, 582.201 )
+position = Vector2( 113.272, 582.201 )
 rotation = 0.785398
 collision_layer = 2
 collision_mask = 5
@@ -73,16 +67,17 @@ position = Vector2( 596, 110 )
 script = ExtResource( 10 )
 
 [node name="Bomb" parent="Item" instance=ExtResource( 9 )]
-position = Vector2( 896, 546 )
+position = Vector2( 674.012, 346.006 )
 script = ExtResource( 12 )
 
 [node name="Booster" parent="Item" instance=ExtResource( 8 )]
-position = Vector2( 870, 114 )
+position = Vector2( 1083.59, 114 )
 script = ExtResource( 11 )
 
 [connection signal="spawn_monster" from="GameManager" to="GameManager/MonsterManager" method="_on_GameManager_spawn_monster"]
 [connection signal="body_entered" from="Item/Battery" to="GameManager/Player" method="_on_Battery_body_entered"]
 [connection signal="body_entered" from="Item/Battery" to="Item/Battery" method="_on_Battery_body_entered"]
+[connection signal="body_entered" from="Item/Bomb" to="GameManager/Player" method="_on_Bomb_body_entered"]
 [connection signal="body_entered" from="Item/Bomb" to="Item/Bomb" method="_on_Bomb_body_entered"]
 [connection signal="body_entered" from="Item/Booster" to="GameManager/Player" method="_on_Booster_body_entered"]
 [connection signal="body_entered" from="Item/Booster" to="Item/Booster" method="_on_Booster_body_entered"]

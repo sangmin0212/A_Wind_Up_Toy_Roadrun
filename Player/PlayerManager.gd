@@ -167,6 +167,9 @@ func take_speed(amount):
 
 func _on_Battery_body_entered(body):
 	take_speed(60)
+	state = "Battery"
+	yield(get_tree().create_timer(1),"timeout")
+	state = "Idle"
 
 
 func _on_Booster_body_entered(body):
@@ -175,3 +178,9 @@ func _on_Booster_body_entered(body):
 	speed = 400
 	print("current speed: ", speed)
 	print("player picked a booster!")
+	state = "Booster"
+	yield(get_tree().create_timer(3),"timeout")
+	state = "Idle"
+
+func _on_Bomb_body_entered(body):
+	game_over()
