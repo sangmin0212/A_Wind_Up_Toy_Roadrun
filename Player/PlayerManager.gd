@@ -39,6 +39,10 @@ func game_start():
 	batteryTimer.start()
 	state = "Idle"
 	
+func stage_clear():
+	speed = 0	
+	batteryTimer.stop()
+	
 func game_over():
 	speed = 0
 	batteryTimer.stop()
