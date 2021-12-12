@@ -65,6 +65,7 @@ window/stretch/aspect="keep"
 [global]
 
 window=false
+andorid=false
 
 [layer_names]
 
