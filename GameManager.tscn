@@ -1,8 +1,8 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://GameManager.gd" type="Script" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Wall/Wall_Creater(touch).gd" type="Script" id=3]
+[ext_resource path="res://Wall/Wall_Creater(mouse).gd" type="Script" id=3]
 [ext_resource path="res://MonsterManager.gd" type="Script" id=4]
 [ext_resource path="res://Wall/Wall_Rotating.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Wall/Wall_Moving.tscn" type="PackedScene" id=6]
@@ -12,6 +12,8 @@
 [ext_resource path="res://Item/Battery.gd" type="Script" id=10]
 [ext_resource path="res://Item/Booster.gd" type="Script" id=11]
 [ext_resource path="res://Item/Bomb.gd" type="Script" id=12]
+[ext_resource path="res://Resource/lifebar_bg.png" type="Texture" id=13]
+[ext_resource path="res://Resource/lifebar_fill.png" type="Texture" id=14]
 
 [node name="RoadRun_Stage1" type="Node2D"]
 
@@ -27,6 +29,19 @@ script = ExtResource( 4 )
 
 [node name="WallCreater" type="Node2D" parent="GameManager"]
 script = ExtResource( 3 )
+
+[node name="Container" type="Container" parent="GameManager/WallCreater"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureProgress" type="TextureProgress" parent="GameManager/WallCreater/Container"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture_under = ExtResource( 13 )
+texture_progress = ExtResource( 14 )
 
 [node name="Wall" type="Node2D" parent="."]
 
