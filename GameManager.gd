@@ -5,7 +5,7 @@ class_name GameManager
 onready var playerManager = get_node("Player")
 onready var monsterManager = get_node("MonsterManager")
 
-signal spawn_monster(playerPos,playerVelocity)
+signal spawn_monster(playerPos,playerVelocity)		
 
 var gameStart = false
 var gameOver = false

@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Player/icon.png" type="Texture" id=1]
+[ext_resource path="res://Resource/character (1).png" type="Texture" id=1]
 [ext_resource path="res://Player/PlayerManager.gd" type="Script" id=2]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 31.6962, 32.2475 )
+[sub_resource type="CircleShape2D" id=7]
+radius = 53.3385
 
 [sub_resource type="Animation" id=2]
 resource_name = "Battery"
@@ -96,7 +96,7 @@ tracks/0/path = NodePath("Sprite:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
@@ -108,7 +108,7 @@ tracks/1/path = NodePath("Sprite:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/keys = {
 "times": PoolRealArray( 0, 1.2 ),
 "transitions": PoolRealArray( 1, 1 ),
@@ -144,16 +144,20 @@ tracks/0/keys = {
 }
 
 [node name="Player" type="KinematicBody2D"]
+rotation = 1.5708
+scale = Vector2( 0.5, 0.5 )
 collision_mask = 6
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, 22 )
 rotation = 1.5708
+scale = Vector2( 0.430517, 0.430517 )
 texture = ExtResource( 1 )
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource( 7 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Battery = SubResource( 2 )

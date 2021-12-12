@@ -6,7 +6,7 @@
 extents = Vector2( 56.6926, 10.8351 )
 
 [node name="Wall_Rotation" type="StaticBody2D"]
-position = Vector2( 80.5, 39.25 )
+scale = Vector2( 1.5, 1 )
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
