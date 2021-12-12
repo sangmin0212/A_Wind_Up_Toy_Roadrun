@@ -6,18 +6,20 @@ var walls = []
 export (int) var wallWidth = 10
 export (int) var wallLimit = 10
 export (int) var wallLengthLimit = 150
+export (int) var WallCreatingTime = 1.5
 
 var isClicked = false
 var isCreated = false
+var isPossibleToMakeWall = true
 
 var startPoint = Vector2()
 var endPoint = Vector2()
 
 var wallCreatingTimer
-var isPossibleToMakeWall = true
+onready var progressTimer = get_node("Container").get_node("WallCreatingTimer")
 
 func _ready():
-	wallCreatingTimer = create_timer("wallCreatingTimer",1.5)
+	wallCreatingTimer = create_timer("wallCreatingTimer",WallCreatingTime)
 
 func create_timer (item_func, item_time) -> Timer:
 	var timer = Timer.new()    
@@ -46,6 +48,11 @@ func _input(event):
 				print("left click unpress")
 
 func _process(_delta):
+	if isPossibleToMakeWall:
+		progressTimer.value = 0
+	else:
+		progressTimer.value += 10#delta/WallCreatingTime
+
 	var tempWall
 	if(isClicked and !isCreated and walls.size() < wallLimit):
 		print("create wall")

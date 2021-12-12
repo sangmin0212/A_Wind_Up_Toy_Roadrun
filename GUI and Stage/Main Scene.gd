@@ -10,7 +10,7 @@ func _ready():
 
 
 func _goto_next_level():
-	get_tree().change_scene("res://GUI and Stage/Stage1.tscn")
+	get_tree().change_scene("res://GameManager.tscn")
 
 
 func _on_Start_pressed():
