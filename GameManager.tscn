@@ -77,6 +77,7 @@ script = ExtResource( 11 )
 [connection signal="spawn_monster" from="GameManager" to="GameManager/MonsterManager" method="_on_GameManager_spawn_monster"]
 [connection signal="body_entered" from="Item/Battery" to="GameManager/Player" method="_on_Battery_body_entered"]
 [connection signal="body_entered" from="Item/Battery" to="Item/Battery" method="_on_Battery_body_entered"]
+[connection signal="body_entered" from="Item/Bomb" to="GameManager/Player" method="game_over"]
 [connection signal="body_entered" from="Item/Bomb" to="GameManager/Player" method="_on_Bomb_body_entered"]
 [connection signal="body_entered" from="Item/Bomb" to="Item/Bomb" method="_on_Bomb_body_entered"]
 [connection signal="body_entered" from="Item/Booster" to="GameManager/Player" method="_on_Booster_body_entered"]
