@@ -1,0 +1,12 @@
+speed (speed * velocity.normalized * delta)
+player : 200
+monster : 150 (change to 220)
+
+cooltime(second)
+battery : 
+booster : 
+
+item effect
+battery : charge 60 speed. after cooltime, speed will be decreased
+booster : make speed to 400, after few second, speed will be come back to 200
+bomb : gameover

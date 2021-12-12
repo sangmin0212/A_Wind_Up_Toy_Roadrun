@@ -24,8 +24,8 @@ var isBooster = false
 onready var _animation_player = $AnimationPlayer
 var state = "Stop"
 
-func _init(_position = Vector2(0,0)):
-	position = _position
+#func _init(_position = Vector2(0,0)):
+#	position = _position
 
 func _ready():
 	# set timer. After 10 second, player's speed will be decreased
@@ -59,7 +59,7 @@ func _physics_process(delta):
 		return
 	velocity = velocity.normalized() * speed
 	var collision = move_and_collide(velocity*delta)
-
+	
 	# turn the player based on reflect_angle
 	if i < 10 and isturn:
 		rotate(reflect_angle/10)
