@@ -1,6 +1,6 @@
 extends Node
 
-class_name GameManager
+class_name Stage2
 
 onready var playerManager = get_node("Player")
 onready var monsterManager = get_node("MonsterManager")
@@ -37,10 +37,6 @@ func game_start():
 func game_over():
 	playerManager.game_over()
 	monsterTimer.stop()
-	
-func stage_clear():	
-	playerManager.stage_clear()
-	monsterTimer.stop()
 
 	
 func start_monster_timer():
@@ -53,6 +49,7 @@ func spawn_monster():
 	isSpawnMonster = true
 	emit_signal("spawn_monster", playerPos, playerVelocity)
 
+
 # make timer 
 # https://godotengine.org/qa/46078/perhaps-a-second-timer
 func create_timer (item_func, item_time) -> Timer:
@@ -62,7 +59,3 @@ func create_timer (item_func, item_time) -> Timer:
 	timer.connect("timeout", self, item_func) 
 	return timer
 
-
-
-func _on_EndPoint_body_entered(body):
-	game_over()

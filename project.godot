@@ -38,6 +38,16 @@ _global_script_classes=[ {
 "class": "PlayerManager",
 "language": "GDScript",
 "path": "res://Player/PlayerManager.gd"
+}, {
+"base": "Node",
+"class": "Stage1",
+"language": "GDScript",
+"path": "res://GUI and Stage/Stage1.gd"
+}, {
+"base": "Node",
+"class": "Stage2",
+"language": "GDScript",
+"path": "res://GUI and Stage/Stage2.gd"
 } ]
 _global_script_class_icons={
 "Battery": "",
@@ -45,13 +55,15 @@ _global_script_class_icons={
 "Booster": "",
 "GameManager": "",
 "Monster": "",
-"PlayerManager": ""
+"PlayerManager": "",
+"Stage1": "",
+"Stage2": ""
 }
 
 [application]
 
 config/name="A_Wind_Up_Toy_Roadrun"
-run/main_scene="res://GameManager.tscn"
+run/main_scene="res://GUI and Stage/Main Scene.tscn"
 config/icon="res://Player/icon.png"
 
 [display]
@@ -75,6 +87,7 @@ window=false
 2d_physics/layer_4="battery"
 2d_physics/layer_5="booster"
 2d_physics/layer_6="bomb"
+2d_physics/layer_7="EndPoint"
 
 [physics]
 
