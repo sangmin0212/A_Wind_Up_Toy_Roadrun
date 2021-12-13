@@ -8,7 +8,6 @@ var next_scene = preload("res://GUI and Stage/Stage1.tscn")
 func _ready():
 	pass 
 
-
 func _goto_next_level():
 	get_tree().change_scene("res://GUI and Stage/Stage1.tscn")
 

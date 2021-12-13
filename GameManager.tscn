@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://GameManager.gd" type="Script" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -10,8 +10,6 @@
 [ext_resource path="res://Item/Booster.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Item/Bomb.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Item/Battery.gd" type="Script" id=10]
-[ext_resource path="res://Item/Booster.gd" type="Script" id=11]
-[ext_resource path="res://Item/Bomb.gd" type="Script" id=12]
 
 [node name="RoadRun_Stage1" type="Node2D"]
 
@@ -43,18 +41,16 @@ position = Vector2( 596, 110 )
 script = ExtResource( 10 )
 
 [node name="Bomb" parent="Item" instance=ExtResource( 9 )]
-position = Vector2( 36, 588 )
-script = ExtResource( 12 )
+position = Vector2( 467.209, 114 )
 
 [node name="Booster" parent="Item" instance=ExtResource( 8 )]
 position = Vector2( 1083.59, 114 )
-script = ExtResource( 11 )
 
 [connection signal="spawn_monster" from="GameManager" to="GameManager/MonsterManager" method="_on_GameManager_spawn_monster"]
 [connection signal="body_entered" from="Item/Battery" to="GameManager/Player" method="_on_Battery_body_entered"]
 [connection signal="body_entered" from="Item/Battery" to="Item/Battery" method="_on_Battery_body_entered"]
-[connection signal="body_entered" from="Item/Bomb" to="GameManager/Player" method="game_over"]
 [connection signal="body_entered" from="Item/Bomb" to="GameManager/Player" method="_on_Bomb_body_entered"]
+[connection signal="body_entered" from="Item/Bomb" to="GameManager/Player" method="game_over"]
 [connection signal="body_entered" from="Item/Bomb" to="Item/Bomb" method="_on_Bomb_body_entered"]
 [connection signal="body_entered" from="Item/Booster" to="GameManager/Player" method="_on_Booster_body_entered"]
 [connection signal="body_entered" from="Item/Booster" to="Item/Booster" method="_on_Booster_body_entered"]
