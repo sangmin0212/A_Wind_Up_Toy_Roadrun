@@ -16,7 +16,7 @@ var startPoint = Vector2()
 var endPoint = Vector2()
 
 var wallCreatingTimer
-onready var progressTimer = get_node("Container").get_node("WallCreatingTimer")
+onready var progressTimer = get_node("WallCreatingTimer").get_node("TextureProgress")
 
 func _ready():
 	wallCreatingTimer = create_timer("wallCreatingTimer",WallCreatingTime)
