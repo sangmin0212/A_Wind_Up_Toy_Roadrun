@@ -13,7 +13,7 @@
 [ext_resource path="res://Interactable/Bomb.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Wall/OutlineWall.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Interactable/Battery.gd" type="Script" id=13]
-[ext_resource path="res://_Image/WhiteBack.png" type="Texture" id=14]
+[ext_resource path="res://_Image/BackGround.png" type="Texture" id=14]
 [ext_resource path="res://Stage/SceneController.tscn" type="PackedScene" id=15]
 
 [sub_resource type="Animation" id=1]
@@ -66,69 +66,8 @@ texture = ExtResource( 14 )
 
 [node name="SceneController" parent="." instance=ExtResource( 15 )]
 
-[node name="UI" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="GameClear" type="Control" parent="UI"]
-visible = false
-margin_left = 670.597
-margin_top = 274.216
-margin_right = 710.597
-margin_bottom = 314.216
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="StageSelect" type="TextureButton" parent="UI/GameClear"]
-margin_left = -337.907
-margin_right = -1.90698
-margin_bottom = 150.0
-texture_normal = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="NextStage" type="TextureButton" parent="UI/GameClear"]
-margin_right = 40.0
-margin_bottom = 40.0
-texture_normal = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="GameOver" type="Control" parent="UI"]
-visible = false
-margin_left = 675.429
-margin_top = 273.642
-margin_right = 715.429
-margin_bottom = 313.642
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Retry" type="TextureButton" parent="UI/GameOver"]
-self_modulate = Color( 1, 0, 0, 1 )
-margin_right = 40.0
-margin_bottom = 40.0
-texture_normal = ExtResource( 5 )
-
-[node name="StageSelect" type="TextureButton" parent="UI/GameOver"]
-margin_left = -341.719
-margin_right = -5.71899
-margin_bottom = 150.0
-texture_normal = ExtResource( 5 )
-
-[node name="AllStageClear" type="Sprite" parent="UI"]
-visible = false
-position = Vector2( 687.442, 336.379 )
-texture = ExtResource( 9 )
-
 [node name="EndPoint" parent="." instance=ExtResource( 4 )]
-position = Vector2( 621, 88 )
+position = Vector2( 1176, 92 )
 
 [node name="NextStageButton" type="TextureButton" parent="."]
 margin_left = 457.0
@@ -199,6 +138,71 @@ rotation = 1.57079
 scale = Vector2( 2.38511, -0.913662 )
 
 [node name="IngameGUI" parent="." instance=ExtResource( 8 )]
+margin_left = 653.151
+margin_top = -4.051
+margin_right = 653.151
+margin_bottom = 11.949
+
+[node name="UI" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameClear" type="Control" parent="UI"]
+visible = false
+margin_left = 670.597
+margin_top = 274.216
+margin_right = 710.597
+margin_bottom = 314.216
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StageSelect" type="TextureButton" parent="UI/GameClear"]
+margin_left = -337.907
+margin_right = -1.90698
+margin_bottom = 150.0
+texture_normal = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextStage" type="TextureButton" parent="UI/GameClear"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture_normal = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOver" type="Control" parent="UI"]
+visible = false
+margin_left = 675.429
+margin_top = 273.642
+margin_right = 715.429
+margin_bottom = 313.642
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Retry" type="TextureButton" parent="UI/GameOver"]
+self_modulate = Color( 1, 0, 0, 1 )
+margin_right = 40.0
+margin_bottom = 40.0
+texture_normal = ExtResource( 5 )
+
+[node name="StageSelect" type="TextureButton" parent="UI/GameOver"]
+margin_left = -341.719
+margin_right = -5.71899
+margin_bottom = 150.0
+texture_normal = ExtResource( 5 )
+
+[node name="AllStageClear" type="Sprite" parent="UI"]
+visible = false
+position = Vector2( 687.442, 336.379 )
+texture = ExtResource( 9 )
 
 [connection signal="body_entered" from="EndPoint" to="NextStageButton" method="_on_EndPoint_body_entered"]
 [connection signal="body_entered" from="EndPoint" to="GameManager" method="_on_EndPoint_body_entered"]
@@ -207,5 +211,7 @@ scale = Vector2( 2.38511, -0.913662 )
 [connection signal="body_entered" from="Battery/Battery" to="Battery/Battery" method="_on_Battery_body_entered"]
 [connection signal="body_entered" from="Battery/Battery2" to="GameManager/Player" method="_on_Battery_body_entered"]
 [connection signal="body_entered" from="Battery/Battery2" to="Battery/Battery2" method="_on_Battery_body_entered"]
+[connection signal="body_entered" from="Booster/Booster" to="GameManager/Player" method="_on_Booster_body_entered"]
+[connection signal="body_entered" from="Booster/Booster" to="Booster/Booster" method="_on_Booster_body_entered"]
 [connection signal="body_entered" from="Bomb/Bomb" to="GameManager/Player" method="_on_Bomb_body_entered"]
 [connection signal="body_entered" from="Bomb/Bomb" to="Bomb/Bomb" method="_on_Bomb_body_entered"]
