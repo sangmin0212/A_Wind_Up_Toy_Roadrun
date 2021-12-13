@@ -3,7 +3,7 @@ extends Node2D
 var wall_node = load("res://Wall/DrawingWall.tscn")
 var walls = []
 
-export (int) var wallWidth = 10
+export (int) var wallWidth = 5
 export (int) var wallLimit = 10
 export (int) var wallLengthLimit = 150
 export (int) var WallCreatingTime = 1.5
