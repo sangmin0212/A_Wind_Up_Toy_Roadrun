@@ -51,7 +51,8 @@ func _process(_delta):
 	if isPossibleToMakeWall:
 		progressTimer.value = 0
 	else:
-		progressTimer.value += 10#delta/WallCreatingTime
+		if(wallLimit > walls.size()):
+			progressTimer.value += 1/WallCreatingTime * 100 * _delta
 
 	var tempWall
 	if(isClicked and !isCreated and walls.size() < wallLimit):

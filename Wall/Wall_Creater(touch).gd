@@ -6,12 +6,31 @@ var walls = []
 export (int) var wallWidth = 10
 export (int) var wallLimit = 10
 export (int) var wallLengthLimit = 150
+export (int) var WallCreatingTime = 1.5
 
 var isClicked = false
 var isCreated = false
+var isPossibleToMakeWall = true
 
 var startPoint = Vector2()
 var endPoint = Vector2()
+
+var wallCreatingTimer
+onready var progressTimer = get_node("WallCreatingTimer").get_node("TextureProgress")
+
+func _ready():
+	wallCreatingTimer = create_timer("wallCreatingTimer",WallCreatingTime)
+
+
+func create_timer (item_func, item_time) -> Timer:
+	var timer = Timer.new()    
+	add_child (timer)
+	timer.set_wait_time (item_time)
+	timer.connect("timeout", self, item_func)
+	return timer
+	
+func wallCreatingTimer():
+	isPossibleToMakeWall = true
 
 func _input(event):
 	if event is InputEventScreenTouch:
@@ -30,7 +49,11 @@ func _input(event):
 		endPoint = get_canvas_transform().xform_inv(event.position)
 
 func _process(_delta):
-	
+	if isPossibleToMakeWall:
+		progressTimer.value = 0
+	else:
+		if(wallLimit > walls.size()):
+			progressTimer.value += 1/WallCreatingTime * 100 * _delta
 	
 	var tempWall
 	if(isClicked and !isCreated and walls.size() < wallLimit):
