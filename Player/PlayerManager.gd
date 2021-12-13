@@ -23,6 +23,7 @@ var isBooster = false
 
 onready var _animation_player = $AnimationPlayer
 var state = "Stop"
+var isGameEnded = false
 
 #func _init(_position = Vector2(0,0)):
 #	position = _position
@@ -42,13 +43,21 @@ func game_start():
 func stage_clear():
 	speed = 0	
 	batteryTimer.stop()
+	isGameEnded = true
 	
 func game_over():
 	speed = 0
 	batteryTimer.stop()
 	state = "Die"
+	isGameEnded = true
 	# 추가 : dead effect, dead sound
 
+func isGameEnded():
+	if isGameEnded:
+		return true
+	else:
+		return false
+	
 func _physics_process(delta):
 	# update animation
 	if !gameOver:
@@ -61,10 +70,10 @@ func _physics_process(delta):
 	var collision = move_and_collide(velocity*delta)
 	
 	# turn the player based on reflect_angle
-	if i < 10 and isturn:
-		rotate(reflect_angle/10)
+	if i < 5 and isturn:
+		rotate(reflect_angle/5)
 		i += 1
-		if i == 10:
+		if i == 5:
 			i = 0
 			isturn = false
 	

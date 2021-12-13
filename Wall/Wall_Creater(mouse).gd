@@ -15,15 +15,14 @@ var isPossibleToMakeWall = true
 var startPoint = Vector2()
 var endPoint = Vector2()
 
-var wall_timer = load("res://GUI/IngameGUI.tscn")
 var wallCreatingTimer
-onready var progressTimer
+var IngameGUI
+var Player
+var progressValue = 0
 
 func _ready():
-	var temp
-	temp = wall_timer.instance()
-	add_child(temp)
-	progressTimer = get_node("IngameGUI").get_node("TextureProgress")
+	IngameGUI = get_parent().get_parent().get_node("IngameGUI")
+	Player = get_parent().get_node("Player")
 	wallCreatingTimer = create_timer("wallCreatingTimer",WallCreatingTime)
 
 func create_timer (item_func, item_time) -> Timer:
@@ -37,39 +36,41 @@ func wallCreatingTimer():
 	isPossibleToMakeWall = true
 
 func _input(event):
-	if isPossibleToMakeWall:
-		if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
-			if  !isClicked  and event.pressed == true:
-				isClicked = true
-				startPoint = get_global_mouse_position()
-				print("left click press")
-			elif isClicked and event.pressed == false:
-				wallCreatingTimer.start()
-				isPossibleToMakeWall = false
-				isClicked = false
-				isCreated = false
-				endPoint = get_global_mouse_position()
-				walls[-1].enable_collision()
-				print("left click unpress")
+	if !Player.isGameEnded():
+		if isPossibleToMakeWall:
+			if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
+				if  !isClicked  and event.pressed == true:
+					isClicked = true
+					startPoint = get_global_mouse_position()
+					print("left click press")
+				elif isClicked and event.pressed == false:
+					wallCreatingTimer.start()
+					isPossibleToMakeWall = false
+					isClicked = false
+					isCreated = false
+					endPoint = get_global_mouse_position()
+					walls[-1].enable_collision()
+					print("left click unpress")
 
 func _process(_delta):
-	if isPossibleToMakeWall:
-		progressTimer.value = 0
-	else:
-		if(wallLimit > walls.size()):
-			progressTimer.value += 1/WallCreatingTime * 100 * _delta
-
-	var tempWall
-	if(isClicked and !isCreated and walls.size() < wallLimit):
-		print("create wall")
-		tempWall = wall_node.instance()
-		add_child(tempWall)
-		walls.append(tempWall)
-		isCreated = true
-	
-	if(isClicked and isCreated):
-		endPoint = get_global_mouse_position()
-		if((endPoint-startPoint).length() > wallLengthLimit):
-			endPoint = startPoint + (endPoint-startPoint).normalized() * wallLengthLimit
-		walls[-1].update_points(startPoint, endPoint, wallWidth)
-
+	if !Player.isGameEnded():
+		if isPossibleToMakeWall:
+			progressValue = 0
+		else:
+			if(wallLimit > walls.size()):
+				progressValue += 1/WallCreatingTime * 100 * _delta
+		IngameGUI.setProgressValue(progressValue)
+		
+		var tempWall
+		if(isClicked and !isCreated and walls.size() < wallLimit):
+			print("create wall")
+			tempWall = wall_node.instance()
+			add_child(tempWall)
+			walls.append(tempWall)
+			isCreated = true
+		
+		if(isClicked and isCreated):
+			endPoint = get_global_mouse_position()
+			if((endPoint-startPoint).length() > wallLengthLimit):
+				endPoint = startPoint + (endPoint-startPoint).normalized() * wallLengthLimit
+			walls[-1].update_points(startPoint, endPoint, wallWidth)

@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://_Image/startButton.png" type="Texture" id=1]
-[ext_resource path="res://Stage/SceneController.tscn" type="PackedScene" id=2]
 
 [node name="GameStroy" type="Node2D"]
 
@@ -18,7 +17,3 @@ texture_normal = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="SceneController" parent="." instance=ExtResource( 2 )]
-
-[connection signal="pressed" from="Start" to="SceneController" method="_stage1"]

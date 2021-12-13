@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://_Image/button2.png" type="Texture" id=1]
-[ext_resource path="res://Stage/SceneController.tscn" type="PackedScene" id=2]
 
 [sub_resource type="Animation" id=3]
 resource_name = "Idle"
@@ -77,8 +76,3 @@ __meta__ = {
 anims/Idle = SubResource( 3 )
 anims/RESET = SubResource( 1 )
 anims/appear = SubResource( 2 )
-
-[node name="SceneController" parent="." instance=ExtResource( 2 )]
-position = Vector2( 2.82837, 0 )
-
-[connection signal="pressed" from="MainMenuButton" to="SceneController" method="_main_scene"]

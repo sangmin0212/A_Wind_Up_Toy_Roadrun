@@ -3,7 +3,6 @@
 [ext_resource path="res://_Image/Monster_1.png" type="Texture" id=1]
 [ext_resource path="res://Monster/Monster.gd" type="Script" id=2]
 
-
 [sub_resource type="Animation" id=1]
 resource_name = "Die"
 tracks/0/type = "value"

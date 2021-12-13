@@ -1,27 +1,22 @@
 extends Node2D
 
 
-# 안에다가 파라미터 = 경로
-func _main_scene():
-	get_tree().change_scene("res://Stage/Main Scene.tscn")
+var lastStage = 0
 
-func _game_story():
-	get_tree().change_scene("res://Stage/GameStroy.tscn")
 
-func _stage1():
-	get_tree().change_scene("res://Stage/Stage1.tscn")
-
-func _stage2():
-	get_tree().change_scene("res://Stage/Stage2.tscn")
-
-func _stage3():
-	get_tree().change_scene("res://Stage/Stage3.tscn")	
-
-func _credit():
-	get_tree().change_scene("res://Stage/Credit.tscn")	
+func _ready():
+	if $Start != null:
+		$Start.connect("timeout", self, "_on_Timer_timeout")
+	if $Next != null:
+		$Next.connect("timeout", self, "_on_Timer_timeout")
+	if $SelectStage != null:
+		$SelectStage.connect("timeout", self, "_on_Timer_timeout")
+	if $Start != null:
+		$Start.connect("timeout", self, "_on_Timer_timeout")
 
 func _exit():
 	get_tree().quit()
 	
-func _load_scene(sceneName):
+func _load_scene(sceneName, _lastStage):
 	get_tree().change_scene("res://Stage/"+sceneName+".tscn")
+	lastStage = _lastStage
