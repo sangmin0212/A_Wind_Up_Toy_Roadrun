@@ -8,12 +8,12 @@
 [ext_resource path="res://Monster/MonsterManager.gd" type="Script" id=6]
 [ext_resource path="res://GameManager.gd" type="Script" id=7]
 [ext_resource path="res://GUI/IngameGUI.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Wall/Wall_Moving.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Wall/Wall_Creater(mouse).gd" type="Script" id=10]
 [ext_resource path="res://Interactable/Bomb.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Wall/OutlineWall.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Interactable/Battery.gd" type="Script" id=13]
 [ext_resource path="res://_Image/WhiteBack.png" type="Texture" id=14]
+[ext_resource path="res://Stage/SceneController.tscn" type="PackedScene" id=15]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -60,8 +60,74 @@ tracks/0/keys = {
 [node name="Stage1" type="Node2D"]
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 662, 362 )
+position = Vector2( 659.48, 363.26 )
 texture = ExtResource( 14 )
+
+[node name="SceneController" parent="." instance=ExtResource( 15 )]
+
+[node name="UI" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameClear" type="Control" parent="UI"]
+visible = false
+margin_left = 670.597
+margin_top = 274.216
+margin_right = 710.597
+margin_bottom = 314.216
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StageSelect" type="TextureButton" parent="UI/GameClear"]
+margin_left = -337.907
+margin_right = -1.90698
+margin_bottom = 150.0
+texture_normal = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextStage" type="TextureButton" parent="UI/GameClear"]
+margin_right = 40.0
+margin_bottom = 40.0
+texture_normal = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Credit" type="TextureButton" parent="UI/GameClear"]
+visible = false
+margin_left = -156.176
+margin_top = 140.158
+margin_right = 179.824
+margin_bottom = 290.158
+texture_normal = ExtResource( 5 )
+
+[node name="GameOver" type="Control" parent="UI"]
+visible = false
+margin_left = 675.429
+margin_top = 273.642
+margin_right = 715.429
+margin_bottom = 313.642
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Retry" type="TextureButton" parent="UI/GameOver"]
+self_modulate = Color( 1, 0, 0, 1 )
+margin_right = 40.0
+margin_bottom = 40.0
+texture_normal = ExtResource( 5 )
+
+[node name="StageSelect" type="TextureButton" parent="UI/GameOver"]
+margin_left = -341.719
+margin_right = -5.71899
+margin_bottom = 150.0
+texture_normal = ExtResource( 5 )
 
 [node name="EndPoint" parent="." instance=ExtResource( 4 )]
 position = Vector2( 621, 88 )
@@ -116,29 +182,27 @@ position = Vector2( 1038, 272 )
 [node name="Wall" type="Node2D" parent="."]
 position = Vector2( 1, 0 )
 
-[node name="Wall_Moving" parent="Wall" instance=ExtResource( 9 )]
-position = Vector2( 761, 378 )
-
 [node name="OuterWall" parent="Wall" instance=ExtResource( 12 )]
-position = Vector2( 654, 9 )
+position = Vector2( 654, 2.38419e-07 )
 scale = Vector2( 2.38511, -0.913662 )
 
 [node name="OuterWall2" parent="Wall" instance=ExtResource( 12 )]
-position = Vector2( 649, 711 )
+position = Vector2( 649, 720 )
 scale = Vector2( 2.38511, -0.913662 )
 
 [node name="OuterWall3" parent="Wall" instance=ExtResource( 12 )]
-position = Vector2( 8, 405 )
+position = Vector2( -0.625423, 430 )
 rotation = 1.57079
 scale = Vector2( 2.38511, -0.913662 )
 
 [node name="OuterWall4" parent="Wall" instance=ExtResource( 12 )]
-position = Vector2( 1270, 421 )
+position = Vector2( 1279, 421 )
 rotation = 1.57079
 scale = Vector2( 2.38511, -0.913662 )
 
 [node name="IngameGUI" parent="." instance=ExtResource( 8 )]
 
+[connection signal="pressed" from="UI/GameClear/Credit" to="SceneController" method="_load_scene" binds= [ "Credit" ]]
 [connection signal="body_entered" from="EndPoint" to="NextStageButton" method="_on_EndPoint_body_entered"]
 [connection signal="body_entered" from="EndPoint" to="GameManager" method="_on_EndPoint_body_entered"]
 [connection signal="spawn_monster" from="GameManager" to="GameManager/MonsterManager" method="_on_GameManager_spawn_monster"]

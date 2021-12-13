@@ -25,12 +25,8 @@ onready var _animation_player = $AnimationPlayer
 var state = "Stop"
 var isGameEnded = false
 
-#func _init(_position = Vector2(0,0)):
-#	position = _position
-
 func _ready():
 	pass
-	# set timer. After 10 second, player's speed will be decreased
 	collisionTimer = create_timer("collision_cooltime", 0.1)
 
 func game_start():
@@ -39,12 +35,10 @@ func game_start():
 	
 func stage_clear():
 	speed = 0	
-	batteryTimer.stop()
 	isGameEnded = true
 	
 func game_over():
 	speed = 0
-	batteryTimer.stop()
 	state = "Die"
 	isGameEnded = true
 	# 추가 : dead effect, dead sound

@@ -7,7 +7,7 @@ var isMonster = false
 var hitPlayer = false
 var target
 var velocity = Vector2.ZERO
-var speed = 150
+var speed = 220
 
 var gameOver = false
 var isDead = false
