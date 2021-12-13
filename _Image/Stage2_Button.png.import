@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Booster.png-566b9a93db1c6b1466a99fcdd6d7e4a2.stex"
+path="res://.import/Stage2_Button.png-5a9e355f077cc8b132d95d97d5651b09.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://_Image/Booster.png"
-dest_files=[ "res://.import/Booster.png-566b9a93db1c6b1466a99fcdd6d7e4a2.stex" ]
+source_file="res://_Image/Stage2_Button.png"
+dest_files=[ "res://.import/Stage2_Button.png-5a9e355f077cc8b132d95d97d5651b09.stex" ]
 
 [params]
 
