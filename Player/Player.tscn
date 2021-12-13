@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://_Image/character (1).png" type="Texture" id=1]
+[ext_resource path="res://_Image/Player_Idle.png" type="Texture" id=1]
 [ext_resource path="res://Player/PlayerManager.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 53.3385
+radius = 42.0476
 
 [sub_resource type="Animation" id=2]
 resource_name = "Battery"
@@ -144,19 +144,20 @@ tracks/0/keys = {
 }
 
 [node name="Player" type="KinematicBody2D"]
-rotation = 1.5708
-scale = Vector2( 0.5, 0.5 )
+rotation = 3.14159
+scale = Vector2( 0.8, 0.8 )
 collision_mask = 30
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, 22 )
+position = Vector2( 30, -0.000106812 )
 rotation = 1.5708
 scale = Vector2( 0.430517, 0.430517 )
 texture = ExtResource( 1 )
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 4, -1.43051e-05 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

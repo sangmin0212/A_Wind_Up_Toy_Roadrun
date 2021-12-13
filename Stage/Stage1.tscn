@@ -13,7 +13,7 @@
 [ext_resource path="res://Interactable/Bomb.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Wall/OutlineWall.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Interactable/Battery.gd" type="Script" id=13]
-[ext_resource path="res://_Image/WhiteBack.png" type="Texture" id=14]
+[ext_resource path="res://_Image/BackGround.png" type="Texture" id=14]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -64,7 +64,7 @@ position = Vector2( 662, 362 )
 texture = ExtResource( 14 )
 
 [node name="EndPoint" parent="." instance=ExtResource( 4 )]
-position = Vector2( 621, 88 )
+position = Vector2( 1144, 92 )
 
 [node name="NextStageButton" type="TextureButton" parent="."]
 margin_left = 457.0
@@ -117,7 +117,7 @@ position = Vector2( 1038, 272 )
 position = Vector2( 1, 0 )
 
 [node name="Wall_Moving" parent="Wall" instance=ExtResource( 9 )]
-position = Vector2( 761, 378 )
+position = Vector2( 901, 231 )
 
 [node name="OuterWall" parent="Wall" instance=ExtResource( 12 )]
 position = Vector2( 654, 9 )
@@ -138,6 +138,10 @@ rotation = 1.57079
 scale = Vector2( 2.38511, -0.913662 )
 
 [node name="IngameGUI" parent="." instance=ExtResource( 8 )]
+margin_left = 661.937
+margin_top = 4.99
+margin_right = 661.937
+margin_bottom = 4.99
 
 [connection signal="body_entered" from="EndPoint" to="NextStageButton" method="_on_EndPoint_body_entered"]
 [connection signal="body_entered" from="EndPoint" to="GameManager" method="_on_EndPoint_body_entered"]

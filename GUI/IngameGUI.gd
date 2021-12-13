@@ -1,8 +1,10 @@
 extends Node
 
 
+var sceneController
+
 func _ready():
-	pass 
+	sceneController = get_parent().get_node("SceneController")
 
 func _on_PauseButton_toggled(button_pressed):
 	if button_pressed:
@@ -12,3 +14,5 @@ func _on_PauseButton_toggled(button_pressed):
 
 func setProgressValue(value):
 	get_node("TextureProgress").value = value
+	
+
