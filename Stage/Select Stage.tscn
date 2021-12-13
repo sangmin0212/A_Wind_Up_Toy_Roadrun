@@ -1,10 +1,16 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://_Image/startButton.png" type="Texture" id=1]
+[ext_resource path="res://_Image/Btn_Stage2.png" type="Texture" id=1]
 [ext_resource path="res://Stage/Main Scene.gd" type="Script" id=2]
 [ext_resource path="res://Stage/SceneController.tscn" type="PackedScene" id=3]
-[ext_resource path="res://_Image/Old/startButton.png" type="Texture" id=4]
+[ext_resource path="res://_Image/Btn_Back.png" type="Texture" id=4]
 [ext_resource path="res://Stage/SelectStageController.gd" type="Script" id=5]
+[ext_resource path="res://_Image/Btn_Stage4.png" type="Texture" id=6]
+[ext_resource path="res://_Image/BackGround.png" type="Texture" id=7]
+[ext_resource path="res://_Image/Btn_Stage1.png" type="Texture" id=8]
+[ext_resource path="res://_Image/Btn_Stage6.png" type="Texture" id=9]
+[ext_resource path="res://_Image/Btn_Stage3.png" type="Texture" id=10]
+[ext_resource path="res://_Image/Btn_Stage5.png" type="Texture" id=11]
 
 [node name="Select Stage" type="Control"]
 anchor_right = 1.0
@@ -26,16 +32,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Sprite" type="Sprite" parent="Stages"]
+position = Vector2( 650.5, 364.5 )
+scale = Vector2( 0.525202, 0.508872 )
+texture = ExtResource( 7 )
+
 [node name="Stage1" type="TextureButton" parent="Stages"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 67.0892
-margin_top = 243.928
-margin_right = 403.089
-margin_bottom = 393.928
-texture_normal = ExtResource( 1 )
+margin_left = 120.0
+margin_top = 252.0
+margin_right = 1071.0
+margin_bottom = 675.0
+rect_scale = Vector2( 0.3, 0.3 )
+texture_normal = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -45,53 +57,60 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 444.051
-margin_top = 245.868
-margin_right = 780.051
-margin_bottom = 395.868
+margin_left = 496.962
+margin_top = 253.94
+margin_right = 1527.96
+margin_bottom = 676.94
+rect_scale = Vector2( 0.3, 0.3 )
 texture_normal = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Stage3" type="TextureButton" parent="Stages"]
-margin_left = 825.76
-margin_top = 245.542
-margin_right = 1161.76
-margin_bottom = 395.542
-texture_normal = ExtResource( 1 )
+margin_left = 878.671
+margin_top = 253.614
+margin_right = 1836.67
+margin_bottom = 676.614
+rect_scale = Vector2( 0.3, 0.3 )
+texture_normal = ExtResource( 10 )
 
 [node name="Stage4" type="TextureButton" parent="Stages"]
-margin_left = 68.9535
-margin_top = 430.539
-margin_right = 404.953
-margin_bottom = 580.539
-texture_normal = ExtResource( 1 )
+margin_left = 121.864
+margin_top = 438.611
+margin_right = 1122.86
+margin_bottom = 861.611
+rect_scale = Vector2( 0.3, 0.3 )
+texture_normal = ExtResource( 6 )
 
 [node name="Stage5" type="TextureButton" parent="Stages"]
-margin_left = 449.039
-margin_top = 433.903
-margin_right = 785.039
-margin_bottom = 583.903
-texture_normal = ExtResource( 1 )
+margin_left = 501.95
+margin_top = 441.975
+margin_right = 1471.95
+margin_bottom = 864.975
+rect_scale = Vector2( 0.3, 0.3 )
+texture_normal = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Stage6" type="TextureButton" parent="Stages"]
-margin_left = 829.124
-margin_top = 433.902
-margin_right = 1165.12
-margin_bottom = 583.902
-texture_normal = ExtResource( 1 )
+margin_left = 882.035
+margin_top = 441.974
+margin_right = 1837.03
+margin_bottom = 864.974
+rect_scale = Vector2( 0.3, 0.3 )
+texture_normal = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Back" type="TextureButton" parent="."]
-margin_left = 995.606
-margin_right = 1331.61
-margin_bottom = 150.0
+margin_left = 1039.0
+margin_top = 30.0
+margin_right = 1772.0
+margin_bottom = 341.0
+rect_scale = Vector2( 0.3, 0.3 )
 texture_normal = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
