@@ -30,6 +30,8 @@ func _input(event):
 		endPoint = get_canvas_transform().xform_inv(event.position)
 
 func _process(_delta):
+	
+	
 	var tempWall
 	if(isClicked and !isCreated and walls.size() < wallLimit):
 		print("create wall")

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/startButton.png-d4f01748fb829c9ae019dcfc00846857.stex"
+path="res://.import/lifebar_bg.png-9feb637d9724fb1607350a67610c509d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GUI and Stage/startButton.png"
-dest_files=[ "res://.import/startButton.png-d4f01748fb829c9ae019dcfc00846857.stex" ]
+source_file="res://Resource/lifebar_bg.png"
+dest_files=[ "res://.import/lifebar_bg.png-9feb637d9724fb1607350a67610c509d.stex" ]
 
 [params]
 
