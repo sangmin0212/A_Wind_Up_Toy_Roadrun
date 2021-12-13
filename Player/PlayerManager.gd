@@ -29,15 +29,12 @@ var isGameEnded = false
 #	position = _position
 
 func _ready():
+	pass
 	# set timer. After 10 second, player's speed will be decreased
 	collisionTimer = create_timer("collision_cooltime", 0.1)
-	batteryTimer = create_timer("battery_cooltime",10)
-	boosterTimer = create_timer("booster_cooltime", 5)
 
 func game_start():
 	speed = 200
-	batteryTimer.set_wait_time(10)
-	batteryTimer.start()
 	state = "Idle"
 	
 func stage_clear():
@@ -135,9 +132,6 @@ func take_speed(amount):
 func _on_Battery_body_entered(body):
 	take_speed(60)
 	state = "Battery"
-	yield(get_tree().create_timer(1),"timeout")
-	state = "Idle"
-
 
 func _on_Booster_body_entered(body):
 	isBooster = true
@@ -145,8 +139,6 @@ func _on_Booster_body_entered(body):
 	print("current speed: ", speed)
 	print("player picked a booster!")
 	state = "Booster"
-	yield(get_tree().create_timer(3),"timeout")
-	state = "Idle"
 
 func _on_Bomb_body_entered(body):
 	game_over()

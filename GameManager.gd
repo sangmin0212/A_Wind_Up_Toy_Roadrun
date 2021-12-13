@@ -22,7 +22,7 @@ var isSpawnMonster
 func _ready():
 	# set timer
 	startTimer = create_timer("game_start", 3)
-	monsterTimer = create_timer("spawn_monster", 3)
+	monsterTimer = create_timer("spawn_monster", 1.5)
 
 	startTimer.start()
 

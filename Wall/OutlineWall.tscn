@@ -4,6 +4,8 @@
 extents = Vector2( 413, 10 )
 
 [node name="OuterWall" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

@@ -21,6 +21,3 @@ func kill_player():
 
 func monster_dead():
 	gameManager.start_monster_timer()
-
-
-	
