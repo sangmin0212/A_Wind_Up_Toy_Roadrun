@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Interactable/Bomb.gd" type="Script" id=1]
+[ext_resource path="res://_Sound/Explosion.wav" type="AudioStream" id=2]
+[ext_resource path="res://_Image/GameObject/bomb.png" type="Texture" id=3]
+[ext_resource path="res://_Image/Cockroach/CTrap.png" type="Texture" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 19.6977
+
+[node name="Bomb" type="Area2D"]
+collision_layer = 8
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -3 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+position = Vector2( 6, -14 )
+scale = Vector2( 0.0351563, 0.0351563 )
+texture = ExtResource( 3 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 0, -3 )
+scale = Vector2( 0.238636, 0.238636 )
+texture = ExtResource( 4 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = 1.0
