@@ -44,13 +44,16 @@ func game_over():
 func stage_clear():	
 	playerManager.stage_clear()
 	monsterTimer.stop()
-	var StageClear = $"../UI/GameClear"
-	StageClear.visible = true
-	sceneController._clear_stage(get_parent().name)
 	if sceneController.is_stage_clear():
-		var Credit = $"../UI/GameClear/Credit"
-		Credit.visible = true
-
+		var AllStageClear = $"../UI/AllStageClear"
+		AllStageClear.visible = true
+		yield(get_tree().create_timer(5),"timeout")
+		get_tree().change_scene("res://Stage/Credit.tscn")
+	else:
+		var StageClear = $"../UI/GameClear"
+		StageClear.visible = true
+		sceneController._clear_stage(get_parent().name)
+	
 	
 func start_monster_timer():
 	# spawn monster

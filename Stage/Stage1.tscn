@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Interactable/Battery.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Interactable/Booster.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Monster/MonsterManager.gd" type="Script" id=6]
 [ext_resource path="res://GameManager.gd" type="Script" id=7]
 [ext_resource path="res://GUI/IngameGUI.tscn" type="PackedScene" id=8]
+[ext_resource path="res://_Image/button2.png" type="Texture" id=9]
 [ext_resource path="res://Wall/Wall_Creater(mouse).gd" type="Script" id=10]
 [ext_resource path="res://Interactable/Bomb.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Wall/OutlineWall.tscn" type="PackedScene" id=12]
@@ -99,14 +100,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Credit" type="TextureButton" parent="UI/GameClear"]
-visible = false
-margin_left = -156.176
-margin_top = 140.158
-margin_right = 179.824
-margin_bottom = 290.158
-texture_normal = ExtResource( 5 )
-
 [node name="GameOver" type="Control" parent="UI"]
 visible = false
 margin_left = 675.429
@@ -128,6 +121,11 @@ margin_left = -341.719
 margin_right = -5.71899
 margin_bottom = 150.0
 texture_normal = ExtResource( 5 )
+
+[node name="AllStageClear" type="Sprite" parent="UI"]
+visible = false
+position = Vector2( 687.442, 336.379 )
+texture = ExtResource( 9 )
 
 [node name="EndPoint" parent="." instance=ExtResource( 4 )]
 position = Vector2( 621, 88 )
@@ -202,7 +200,6 @@ scale = Vector2( 2.38511, -0.913662 )
 
 [node name="IngameGUI" parent="." instance=ExtResource( 8 )]
 
-[connection signal="pressed" from="UI/GameClear/Credit" to="SceneController" method="_load_scene" binds= [ "Credit" ]]
 [connection signal="body_entered" from="EndPoint" to="NextStageButton" method="_on_EndPoint_body_entered"]
 [connection signal="body_entered" from="EndPoint" to="GameManager" method="_on_EndPoint_body_entered"]
 [connection signal="spawn_monster" from="GameManager" to="GameManager/MonsterManager" method="_on_GameManager_spawn_monster"]

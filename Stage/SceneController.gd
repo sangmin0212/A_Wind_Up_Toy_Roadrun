@@ -27,3 +27,17 @@ func _input(event):
 			stageClear[stage] = true
 	if Input.is_action_pressed("ui_right"):
 		print(is_stage_clear())		
+#	if Input.is_action_pressed("ui_up"):
+#		var button = $"../Stages/Stage2"
+#		button.disabled = false
+#	if Input.is_action_pressed("ui_down"):
+#		var button = $"../Stages/Stage2"
+#		button.disabled = true	
+		
+	
+		
+
+
+
+func _on_Stage2_pressed():
+	print("clickclickclick")
