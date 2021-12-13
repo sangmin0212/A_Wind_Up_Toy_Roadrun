@@ -12,17 +12,17 @@ _global_script_classes=[ {
 "base": "Area2D",
 "class": "Battery",
 "language": "GDScript",
-"path": "res://Item/Battery.gd"
+"path": "res://Interactable/Battery.gd"
 }, {
 "base": "Area2D",
 "class": "Bomb",
 "language": "GDScript",
-"path": "res://Item/Bomb.gd"
+"path": "res://Interactable/Bomb.gd"
 }, {
 "base": "Area2D",
 "class": "Booster",
 "language": "GDScript",
-"path": "res://Item/Booster.gd"
+"path": "res://Interactable/Booster.gd"
 }, {
 "base": "Node",
 "class": "GameManager",
@@ -51,8 +51,7 @@ _global_script_class_icons={
 [application]
 
 config/name="A_Wind_Up_Toy_Roadrun"
-run/main_scene="res://GUI and Stage/Main Scene.tscn"
-config/icon="res://Player/icon.png"
+run/main_scene="res://Stage/Main Scene.tscn"
 
 [display]
 

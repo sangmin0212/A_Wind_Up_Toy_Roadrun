@@ -15,7 +15,7 @@ var isPossibleToMakeWall = true
 var startPoint = Vector2()
 var endPoint = Vector2()
 
-var wall_timer = load("res://GUI and Stage/WallCreatingTimer.tscn")
+var wall_timer = load("res://GUI/IngameGUI.tscn")
 var wallCreatingTimer
 onready var progressTimer
 
@@ -23,7 +23,7 @@ func _ready():
 	var temp
 	temp = wall_timer.instance()
 	add_child(temp)
-	progressTimer = get_node("WallCreatingTimer").get_node("TextureProgress")
+	progressTimer = get_node("IngameGUI").get_node("TextureProgress")
 	wallCreatingTimer = create_timer("wallCreatingTimer",WallCreatingTime)
 
 func create_timer (item_func, item_time) -> Timer:
