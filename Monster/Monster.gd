@@ -33,6 +33,7 @@ func _physics_process(delta):
 		if collision.collider.get_collision_layer_bit(0):
 			speed = 0
 			monsterManager.kill_player()
+			state = "Kill"
 			get_node("CollisionShape2D").disabled = true
 			yield(get_tree().create_timer(1.5),"timeout")
 			gameOver = true

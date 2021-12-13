@@ -19,7 +19,7 @@
 [node name="Stage1" type="Node2D"]
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 659.48, 363.26 )
+position = Vector2( 654.596, 372.817 )
 texture = ExtResource( 14 )
 
 [node name="SceneController" parent="." instance=ExtResource( 15 )]
