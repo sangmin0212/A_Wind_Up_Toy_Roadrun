@@ -105,6 +105,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Sprite" type="Sprite" parent="UI/GameClear"]
+position = Vector2( -18.097, 99.784 )
+scale = Vector2( 0.533667, 0.508238 )
+texture = ExtResource( 14 )
+
 [node name="StageSelect" type="TextureButton" parent="UI/GameClear"]
 margin_left = -228.0
 margin_top = 107.0
@@ -136,6 +141,11 @@ margin_bottom = 313.642
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Sprite" type="Sprite" parent="UI/GameOver"]
+position = Vector2( -18.097, 99.784 )
+scale = Vector2( 0.533667, 0.508238 )
+texture = ExtResource( 14 )
 
 [node name="Retry" type="TextureButton" parent="UI/GameOver"]
 margin_left = -152.429

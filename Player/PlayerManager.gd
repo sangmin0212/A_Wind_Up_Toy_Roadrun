@@ -25,6 +25,9 @@ onready var _animation_player = $AnimationPlayer
 var state = "Stop"
 var isGameEnded = false
 
+func getSpeed():
+	return speed
+
 func _ready():
 	pass
 	collisionTimer = create_timer("collision_cooltime", 0.1)
