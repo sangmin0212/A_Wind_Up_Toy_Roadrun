@@ -4,6 +4,7 @@ class_name GameManager
 
 onready var playerManager = get_node("Player")
 onready var monsterManager = get_node("MonsterManager")
+onready var sceneController = get_parent().get_node("SceneController")
 
 signal spawn_monster(playerPos,playerVelocity)		
 
@@ -37,19 +38,29 @@ func game_start():
 func game_over():
 	playerManager.game_over()
 	monsterTimer.stop()
+	var GameOver = $"../UI/GameOver"
+	GameOver.visible = true
 	
 func stage_clear():	
 	playerManager.stage_clear()
 	monsterTimer.stop()
+	var StageClear = $"../UI/GameClear"
+	StageClear.visible = true
+	sceneController._clear_stage(get_parent().name)
+	if sceneController.is_stage_clear():
+		var Credit = $"../UI/GameClear/Credit"
+		Credit.visible = true
 
 	
 func start_monster_timer():
 	# spawn monster
+	print("startMonsterTimer")
 	monsterTimer.start()
 	playerPos = playerManager.position
 	playerVelocity = playerManager.velocity
 
 func spawn_monster():
+	monsterTimer.stop()
 	isSpawnMonster = true
 	emit_signal("spawn_monster", playerPos, playerVelocity)
 
@@ -66,6 +77,12 @@ func create_timer (item_func, item_time) -> Timer:
 func _on_EndPoint_body_entered(body):
 	stage_clear()
 
-
 func _on_Bomb_body_entered(body):
 	game_over()
+
+func _input(event):
+	if Input.is_action_pressed("ui_up"):
+		stage_clear()
+	if Input.is_action_pressed("ui_down"):
+		game_over()
+			
