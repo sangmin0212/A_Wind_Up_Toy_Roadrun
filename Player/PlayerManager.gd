@@ -95,54 +95,16 @@ func _physics_process(delta):
 		if speed <= speedInitial:
 			speed = speedInitial
 			isBooster = false
-	
 
-
-# Item
-func _battery():
-	# 추가 : baatery sound
-	is_battery_work = true
-	speed = 200	
-	batteryTimer.start()
-	state = "Battery"
-	yield(get_tree().create_timer(1),"timeout")
-	state = "Idle"
-	
-func _booster():
-	# 추가 : booster sound
-	speed = 400
-	boosterTimer.set_wait_time(1)
-	boosterTimer.start()
-	state = "Booster"
-	yield(get_tree().create_timer(3),"timeout")
-	state = "Idle"
-	
-# Item timer
-# cooltime이랑 지속시간이랑 헷갈린 거 같아서 함수 이름 수정했어.
-func battery_time():
-	while speed > 0:
-		yield(get_tree().create_timer(0.2),"timeout")
-		speed -= 10
-		if speed <= 0:
-			speed = 0
-			state = "Stop"
-	
-func booster_time():
-	while speed > 200:
-		yield(get_tree().create_timer(0.2),"timeout")
-		speed -= 20
-		if speed <= 200:
-			speed = 200
-	
-	
-func collision_cooltime():
-	canCollision = true
 
 func update_sprite():
 	if _animation_player.get_current_animation() != state:
 		_animation_player.play(state);
 	if state == "Die":
-		gameOver = true
+		gameOver = true	
+		
+func collision_cooltime():
+	canCollision = true
 
 # make timer 
 # https://godotengine.org/qa/46078/perhaps-a-second-timer
@@ -152,14 +114,6 @@ func create_timer (item_func, item_time) -> Timer:
 	timer.set_wait_time (item_time)
 	timer.connect("timeout", self, item_func)
 	return timer
-	
-##임시 치트키
-#func _input(event):
-#	if Input.is_action_pressed("ui_up"):
-#			_battery()
-#	if Input.is_action_pressed("ui_down"):
-#			_booster()
-
 
 # 1205 효연 추가
 func take_speed(amount):
@@ -178,7 +132,6 @@ func _on_Battery_body_entered(body):
 
 func _on_Booster_body_entered(body):
 	isBooster = true
-	
 	speed = 400
 	print("current speed: ", speed)
 	print("player picked a booster!")

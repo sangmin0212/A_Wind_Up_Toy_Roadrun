@@ -63,6 +63,9 @@ func create_timer (item_func, item_time) -> Timer:
 	return timer
 
 
-
 func _on_EndPoint_body_entered(body):
+	stage_clear()
+
+
+func _on_Bomb_body_entered(body):
 	game_over()
