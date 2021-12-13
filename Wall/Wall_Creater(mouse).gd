@@ -3,7 +3,7 @@ extends Node2D
 var wall_node = load("res://Wall/DrawingWall.tscn")
 var walls = []
 
-export (int) var wallWidth = 5
+export (int) var wallWidth = 10
 export (int) var wallLimit = 10
 export (int) var wallLengthLimit = 150
 export (int) var WallCreatingTime = 1.5
@@ -15,12 +15,15 @@ var isPossibleToMakeWall = true
 var startPoint = Vector2()
 var endPoint = Vector2()
 
-var wall_timer
+var wall_timer = load("res://GUI and Stage/WallCreatingTimer.tscn")
 var wallCreatingTimer
-var progressValue = 0
+onready var progressTimer
 
 func _ready():
-	wall_timer = get_tree().get_root().find_node("IngameGUI")
+	var temp
+	temp = wall_timer.instance()
+	add_child(temp)
+	progressTimer = get_node("WallCreatingTimer").get_node("TextureProgress")
 	wallCreatingTimer = create_timer("wallCreatingTimer",WallCreatingTime)
 
 func create_timer (item_func, item_time) -> Timer:
@@ -51,18 +54,11 @@ func _input(event):
 
 func _process(_delta):
 	if isPossibleToMakeWall:
-		progressValue = 0
+		progressTimer.value = 0
 	else:
-		if wall_timer != null:
-			print("not null")
-			wall_timer.fillTimer(progressValue)
-			if(wallLimit > walls.size()):
-				progressValue += 1/WallCreatingTime * 100 * _delta
-		else:
-			print("null")
-			
-	
-	
+		if(wallLimit > walls.size()):
+			progressTimer.value += 1/WallCreatingTime * 100 * _delta
+
 	var tempWall
 	if(isClicked and !isCreated and walls.size() < wallLimit):
 		print("create wall")

@@ -12,17 +12,17 @@ _global_script_classes=[ {
 "base": "Area2D",
 "class": "Battery",
 "language": "GDScript",
-"path": "res://Interactable/Battery.gd"
+"path": "res://Item/Battery.gd"
 }, {
 "base": "Area2D",
 "class": "Bomb",
 "language": "GDScript",
-"path": "res://Interactable/Bomb.gd"
+"path": "res://Item/Bomb.gd"
 }, {
 "base": "Area2D",
 "class": "Booster",
 "language": "GDScript",
-"path": "res://Interactable/Booster.gd"
+"path": "res://Item/Booster.gd"
 }, {
 "base": "Node",
 "class": "GameManager",
@@ -38,19 +38,6 @@ _global_script_classes=[ {
 "class": "PlayerManager",
 "language": "GDScript",
 "path": "res://Player/PlayerManager.gd"
-<<<<<<< Updated upstream
-=======
-}, {
-"base": "Node",
-"class": "Stage1",
-"language": "GDScript",
-"path": "res://Stages/Stage1.gd"
-}, {
-"base": "Node",
-"class": "Stage2",
-"language": "GDScript",
-"path": "res://Stages/Stage2.gd"
->>>>>>> Stashed changes
 } ]
 _global_script_class_icons={
 "Battery": "",
@@ -64,7 +51,8 @@ _global_script_class_icons={
 [application]
 
 config/name="A_Wind_Up_Toy_Roadrun"
-run/main_scene="res://Stages/Main Scene.tscn"
+run/main_scene="res://GUI and Stage/Main Scene.tscn"
+config/icon="res://Player/icon.png"
 
 [display]
 
@@ -79,16 +67,16 @@ window/stretch/aspect="keep"
 
 window=false
 andorid=false
-col=false
-colli=false
 
 [layer_names]
 
-2d_physics/layer_1="Player"
-2d_physics/layer_2="Wall"
-2d_physics/layer_3="Enemy"
-2d_physics/layer_4="Item"
-2d_physics/layer_5="EndPoint"
+2d_physics/layer_1="player"
+2d_physics/layer_2="wall"
+2d_physics/layer_3="eneimes"
+2d_physics/layer_4="battery"
+2d_physics/layer_5="booster"
+2d_physics/layer_6="bomb"
+2d_physics/layer_7="EndPoint"
 
 [physics]
 

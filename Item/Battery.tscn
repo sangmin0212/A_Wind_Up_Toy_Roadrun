@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Item/battery.png" type="Texture" id=1]
+
+[node name="Battery" type="Area2D"]
+collision_layer = 8
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( 0.387242, -0.774485 )
+scale = Vector2( 0.225515, 0.225516 )
+polygon = PoolVector2Array( -18, -141, 18, -141, 48, -128, 49, 125, 32, 139, -32, 139, -48, 124, -47, -129 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 1, -1 )
+scale = Vector2( 0.0185, 0.0185 )
+texture = ExtResource( 1 )

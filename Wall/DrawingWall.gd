@@ -25,11 +25,11 @@ func enable_collision():
 	get_node("OuterCollisionPolygon2D").disabled = false
 	
 func _on_Area2D_body_exited(body):
-	if(body.name == player.name):
+	if(body.name == "Player"):
 		print("overlap end")
 		get_node("OuterCollisionPolygon2D").disabled = false
 
 func _on_Area2D_body_entered(body):
-	if(body.name == player.name):
+	if(body.name == "Player"):
 		print("overlap start")
 		get_node("OuterCollisionPolygon2D").disabled = true

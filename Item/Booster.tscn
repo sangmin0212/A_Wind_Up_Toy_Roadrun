@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Item/booster.png" type="Texture" id=1]
+[ext_resource path="res://Item/Booster.gd" type="Script" id=2]
+
+[node name="Booster" type="Area2D"]
+collision_layer = 8
+script = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( 0, -2 )
+scale = Vector2( 0.276923, 0.276923 )
+polygon = PoolVector2Array( -37, -78, -53, -71, -63, -59, -71, -10, -46, 84, 71, 94, 102, -25, 21, -71 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 1, -1 )
+scale = Vector2( 0.033, 0.033 )
+texture = ExtResource( 1 )
