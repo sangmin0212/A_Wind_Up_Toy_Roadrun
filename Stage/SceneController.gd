@@ -13,6 +13,7 @@ func _load_scene(sceneName):
 
 func _clear_stage(stage):
 	stageClear[stage] = true
+	print(stageClear[stage])
 
 func is_stage_clear():
 	for stage in stageClear:
@@ -22,12 +23,8 @@ func is_stage_clear():
 	return gameAllClear
 
 func _input(event):
-	if Input.is_action_pressed("ui_left"):
-		for stage in stageClear:
-			stageClear[stage] = true
 	if Input.is_action_pressed("ui_right"):
-		print(is_stage_clear())		
+		for i in stageClear:
+			print(stageClear[i])
+	
 
-
-func _on_Stage2_pressed():
-	print("clickclickclick")

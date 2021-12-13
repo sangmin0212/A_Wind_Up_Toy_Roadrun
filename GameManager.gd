@@ -44,6 +44,8 @@ func game_over():
 func stage_clear():	
 	playerManager.stage_clear()
 	monsterTimer.stop()
+	sceneController._clear_stage(get_parent().name)
+	print(get_parent().name)
 	if sceneController.is_stage_clear():
 		var AllStageClear = $"../UI/AllStageClear"
 		AllStageClear.visible = true
@@ -52,7 +54,7 @@ func stage_clear():
 	else:
 		var StageClear = $"../UI/GameClear"
 		StageClear.visible = true
-		sceneController._clear_stage(get_parent().name)
+		
 	
 	
 func start_monster_timer():

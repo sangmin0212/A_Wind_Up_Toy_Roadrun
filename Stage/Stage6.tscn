@@ -16,7 +16,7 @@
 [ext_resource path="res://_Image/BackGround.png" type="Texture" id=14]
 [ext_resource path="res://Stage/SceneController.tscn" type="PackedScene" id=15]
 
-[node name="Stage1" type="Node2D"]
+[node name="Stage6" type="Node2D"]
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 659.48, 363.26 )
@@ -104,17 +104,9 @@ __meta__ = {
 }
 
 [node name="StageSelect" type="TextureButton" parent="UI/GameClear"]
-margin_left = -337.907
-margin_right = -1.90698
+margin_left = -184.637
+margin_right = 151.363
 margin_bottom = 150.0
-texture_normal = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="NextStage" type="TextureButton" parent="UI/GameClear"]
-margin_right = 40.0
-margin_bottom = 40.0
 texture_normal = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -158,6 +150,5 @@ texture = ExtResource( 9 )
 [connection signal="body_entered" from="Bomb/Bomb" to="GameManager/Player" method="_on_Bomb_body_entered"]
 [connection signal="body_entered" from="Bomb/Bomb" to="Bomb/Bomb" method="_on_Bomb_body_entered"]
 [connection signal="pressed" from="UI/GameClear/StageSelect" to="SceneController" method="_load_scene" binds= [ "Select Stage" ]]
-[connection signal="pressed" from="UI/GameClear/NextStage" to="SceneController" method="_load_scene" binds= [ "Stage2" ]]
 [connection signal="pressed" from="UI/GameOver/Retry" to="SceneController" method="_load_scene" binds= [ "Stage1" ]]
 [connection signal="pressed" from="UI/GameOver/StageSelect" to="SceneController" method="_load_scene" binds= [ "Select Stage" ]]
