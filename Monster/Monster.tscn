@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://_Image/Monster_1.png" type="Texture" id=1]
+[ext_resource path="res://_Image/Monster.png" type="Texture" id=1]
 [ext_resource path="res://Monster/Monster.gd" type="Script" id=2]
 
 [sub_resource type="Animation" id=1]
@@ -46,20 +46,24 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
 }
 
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 30.0
+
 [node name="Monster" type="KinematicBody2D"]
-scale = Vector2( 0.7, 0.7 )
 collision_layer = 4
 collision_mask = 3
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-rotation = 1.5708
-scale = Vector2( 0.1, 0.1 )
+position = Vector2( -8.57143, -1.42857 )
+rotation = 4.71239
+scale = Vector2( 0.198304, 0.198304 )
 texture = ExtResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Die = SubResource( 1 )
 anims/Idle = SubResource( 2 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( -9.26273, -32.6167, -2.15154, -35.2834, 6.95967, -39.9502, 11.6264, -41.2835, 17.8487, -39.2835, 23.1821, -31.7279, 23.1821, -29.2834, 21.182, -26.6167, 24.7376, -24.6167, 30.2933, -17.5055, 33.1822, -6.17202, 33.1822, -4.39422, 34.7377, 5.82811, 33.1822, 9.60593, 29.8488, 14.4949, 29.6266, 22.0505, 27.1821, 24.9394, 21.182, 26.7172, 24.071, 29.1617, 22.7376, 31.3839, 19.8487, 40.0507, 16.2931, 40.0507, 2.95963, 34.9395, -0.15152, 33.8284, -4.59601, 32.4951, -6.15158, 28.0506, -12.8183, 27.1617, -18.8184, 20.4949, -25.0407, 13.3837, -24.374, 4.05031, -27.7074, -6.83869, -23.4851, -17.061, -20.5962, -30.3945 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 4.28571, -1.42857 )
+shape = SubResource( 3 )
