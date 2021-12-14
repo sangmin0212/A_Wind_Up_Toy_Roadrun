@@ -1,3 +1,4 @@
+# We don't use it because mouse click also works in touch screen
 extends Node2D
 
 var wall_node = load("res://Wall/DrawingWall.tscn")

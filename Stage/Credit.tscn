@@ -33,7 +33,7 @@ __meta__ = {
 }
 
 [node name="Credit title" type="Sprite" parent="."]
-position = Vector2( 641.309, 222.236 )
+position = Vector2( 641, 202 )
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 8 )
 

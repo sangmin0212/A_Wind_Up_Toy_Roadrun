@@ -35,22 +35,28 @@ func create_timer (item_func, item_time) -> Timer:
 func wallCreatingTimer():
 	isPossibleToMakeWall = true
 
+func isUIArea(pos):
+	if pos.x >= 548 && pos.x <=761 && pos.y >=9 && pos.y <= 98:
+		return true
+	return false
+
 func _input(event):
 	if !Player.isGameEnded():
 		if isPossibleToMakeWall:
 			if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
-				if  !isClicked  and event.pressed == true:
-					isClicked = true
-					startPoint = get_global_mouse_position()
-					print("left click press")
-				elif isClicked and event.pressed == false:
-					wallCreatingTimer.start()
-					isPossibleToMakeWall = false
-					isClicked = false
-					isCreated = false
-					endPoint = get_global_mouse_position()
-					walls[-1].enable_collision()
-					print("left click unpress")
+				if !isUIArea(get_global_mouse_position()):
+					if  !isClicked  and event.pressed == true:
+						isClicked = true
+						startPoint = get_global_mouse_position()
+						print("left click press")
+					elif isClicked and event.pressed == false:
+						wallCreatingTimer.start()
+						isPossibleToMakeWall = false
+						isClicked = false
+						isCreated = false
+						endPoint = get_global_mouse_position()
+						walls[-1].enable_collision()
+						print("left click unpress")
 
 func _process(_delta):
 	if !Player.isGameEnded():

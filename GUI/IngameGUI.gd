@@ -27,6 +27,5 @@ func _process(delta):
 		speedProgressBar.value = temp/ 200 * 100
 
 
-
 func _on_Home_pressed():
 	sceneController._load_scene("Main Scene")
