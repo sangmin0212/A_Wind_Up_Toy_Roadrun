@@ -47,3 +47,7 @@ func _process(delta):
 
 func _on_Home_pressed():
 	sceneController._load_scene("Main Scene")
+
+
+func _on_Retry_pressed():
+	sceneController._load_scene(get_parent().to_string())
