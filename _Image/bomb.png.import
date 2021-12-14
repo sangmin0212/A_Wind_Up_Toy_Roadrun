@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bomb.png-844de570f5161a7b2dd1b3fe28b1db53.stex"
+path="res://.import/Bomb.png-ee57107865cad5661e44c18d2c335c77.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://_Image/bomb.png"
-dest_files=[ "res://.import/bomb.png-844de570f5161a7b2dd1b3fe28b1db53.stex" ]
+source_file="res://_Image/Bomb.png"
+dest_files=[ "res://.import/Bomb.png-ee57107865cad5661e44c18d2c335c77.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

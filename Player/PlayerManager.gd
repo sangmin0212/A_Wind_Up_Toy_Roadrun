@@ -6,7 +6,7 @@ onready var gameManager = find_parent("GameManager")
 var gameOver = false
 
 # Move and Rotate
-var velocity
+var velocity = Vector2(1,0)
 var speed = 0
 var speedInitial = 200
 var speedMax = 400
@@ -25,12 +25,11 @@ onready var _animation_player = $AnimationPlayer
 var state = "Stop"
 var isGameEnded = false
 
-onready var reflectSound = $reflectSound
-onready var deadSound = $DeadSound
-
+func getSpeed():
+	return speed
 
 func _ready():
-	velocity = Vector2(cos(rotation), sin(rotation))
+	pass
 	collisionTimer = create_timer("collision_cooltime", 0.1)
 
 func game_start():
@@ -42,7 +41,6 @@ func stage_clear():
 	isGameEnded = true
 	
 func game_over():
-	deadSound.play()
 	speed = 0
 	state = "Die"
 	isGameEnded = true
@@ -74,6 +72,7 @@ func _physics_process(delta):
 			isturn = false
 	
 	# if wind-up toy collide with wall, change move direction
+	# 추가 : reflect sound 
 	if collision and canCollision:
 		collisionTimer.start()
 		canCollision = false
@@ -91,7 +90,6 @@ func _physics_process(delta):
 	speed -= 10 * delta
 	
 	if speed <= 0:
-		game_over()
 		print("Player died!!!")
 		get_tree().paused = true
 	

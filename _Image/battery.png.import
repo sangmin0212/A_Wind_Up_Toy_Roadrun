@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/battery.png-f6098c2d7192bf8077c5c868ba06a6e6.stex"
+path="res://.import/Battery.png-8352a6bc504b651de15d1d4dba803e9e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://_Image/battery.png"
-dest_files=[ "res://.import/battery.png-f6098c2d7192bf8077c5c868ba06a6e6.stex" ]
+source_file="res://_Image/Battery.png"
+dest_files=[ "res://.import/Battery.png-8352a6bc504b651de15d1d4dba803e9e.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true
