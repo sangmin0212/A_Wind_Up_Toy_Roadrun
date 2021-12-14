@@ -59,7 +59,7 @@ position = Vector2( 839.959, 594 )
 [node name="Booster" type="Node2D" parent="."]
 
 [node name="Booster" parent="Booster" instance=ExtResource( 13 )]
-position = Vector2( 509.361, 179.865 )
+position = Vector2( 443, 210 )
 
 [node name="Bomb" type="Node2D" parent="."]
 

@@ -38,7 +38,7 @@ position = Vector2( 661.101, 628.088 )
 script = ExtResource( 1 )
 
 [node name="Player" parent="GameManager" instance=ExtResource( 11 )]
-position = Vector2( 646.661, 159.026 )
+position = Vector2( 640, 220 )
 rotation = 1.5708
 
 [node name="MonsterManager" type="Node2D" parent="GameManager"]
