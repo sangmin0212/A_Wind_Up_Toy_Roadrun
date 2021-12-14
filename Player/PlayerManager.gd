@@ -6,7 +6,7 @@ onready var gameManager = find_parent("GameManager")
 var gameOver = false
 
 # Move and Rotate
-var velocity = Vector2(1,0)
+var velocity
 var speed = 0
 var speedInitial = 200
 var speedMax = 400
@@ -25,11 +25,18 @@ onready var _animation_player = $AnimationPlayer
 var state = "Stop"
 var isGameEnded = false
 
+onready var reflectSound = $reflectSound
+onready var deadSound = $DeadSound
+onready var batterySound = $BatterySound
+onready var boosterSound = $BoosterSound
+onready var bombSound = $BombSound
+
+
 func getSpeed():
 	return speed
 
 func _ready():
-	pass
+	velocity = Vector2(cos(rotation),sin(rotation))
 	collisionTimer = create_timer("collision_cooltime", 0.1)
 
 func game_start():
@@ -41,6 +48,9 @@ func stage_clear():
 	isGameEnded = true
 	
 func game_over():
+	print("hello")
+	if !deadSound.is_playing():
+		deadSound.play()
 	speed = 0
 	state = "Die"
 	isGameEnded = true
@@ -75,6 +85,7 @@ func _physics_process(delta):
 	# 추가 : reflect sound 
 	if collision and canCollision:
 		collisionTimer.start()
+		reflectSound.play()
 		canCollision = false
 		var reflect = collision.remainder.bounce(collision.normal)
 		# calculate reflect_angle(using 2 vector). using rotate in _physics_process for rotate smootly
@@ -127,12 +138,16 @@ func take_speed(amount):
 
 
 func _on_Battery_body_entered(body):
+	if !batterySound.is_playing():
+		batterySound.play()
 	take_speed(60)
 	state = "Battery"
 	yield(get_tree().create_timer(1),"timeout")
 	state = "Idle" 
 
 func _on_Booster_body_entered(body):
+	if !boosterSound.is_playing():
+		boosterSound.play()	
 	isBooster = true
 	speed = 400
 	print("current speed: ", speed)
