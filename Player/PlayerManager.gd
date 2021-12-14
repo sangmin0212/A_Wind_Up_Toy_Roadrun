@@ -1,3 +1,6 @@
+# code owner : Sangmin Oh
+# sub code owner : Hyoyeon yu (control player speed, item)
+
 extends KinematicBody2D
 
 class_name PlayerManager
@@ -5,26 +8,31 @@ class_name PlayerManager
 onready var gameManager = find_parent("GameManager")
 var gameOver = false
 
-# Move and Rotate
+# Move
 var velocity
 var speed = 0
 var speedInitial = 200
 var speedMax = 400
+
+# Rotation
 var reflect_angle = 0
 var isturn = false
 var collisionTimer
 var canCollision = true
 var i = 0
+
 # Item
 var is_battery_work = true
 var batteryTimer
 var boosterTimer
 var isBooster = false
 
+# Animation
 onready var _animation_player = $AnimationPlayer
 var state = "Stop"
 var isGameEnded = false
 
+# Sound
 onready var reflectSound = $reflectSound
 onready var deadSound = $DeadSound
 onready var batterySound = $BatterySound
@@ -36,6 +44,7 @@ func getSpeed():
 	return speed
 
 func _ready():
+	# set first direction using player rotation
 	velocity = Vector2(cos(rotation),sin(rotation))
 	collisionTimer = create_timer("collision_cooltime", 0.1)
 
@@ -46,15 +55,14 @@ func game_start():
 func stage_clear():
 	speed = 0	
 	isGameEnded = true
-	
+
+# call it when GameManager.game_over()
 func game_over():
-	print("hello")
 	if !deadSound.is_playing():
 		deadSound.play()
 	speed = 0
 	state = "Die"
 	isGameEnded = true
-	# 추가 : dead effect, dead sound
 
 func isGameEnded():
 	if isGameEnded:
@@ -67,7 +75,7 @@ func _physics_process(delta):
 	if !gameOver:
 		update_animation()
 		
-	# player move itself
+	# makes the player move on his own.
 	if speed == 0:
 		return
 	velocity = velocity.normalized() * speed
@@ -82,7 +90,6 @@ func _physics_process(delta):
 			isturn = false
 	
 	# if wind-up toy collide with wall, change move direction
-	# 추가 : reflect sound 
 	if collision and canCollision:
 		collisionTimer.start()
 		reflectSound.play()
@@ -96,26 +103,29 @@ func _physics_process(delta):
 		move_and_collide(reflect)
 		
 	
-	# 1205 Hyoyeon Yu work
+	# speed will be decreased automatically
 	speed -= 10 * delta
 	
+	# if speed == 0, player, determined that the player is dead.
 	if speed <= 0:
 		print("Player died!!!")
 		get_tree().paused = true
 	
+	# If collide with booster, decrease speed until it returns to 200.
 	if isBooster and speed > 200:
 		speed -= 50 * delta
 		if speed <= speedInitial:
 			speed = speedInitial
 			isBooster = false
 
-
+# update animation based on player state
 func update_animation():
 	if _animation_player.get_current_animation() != state:
 		_animation_player.play(state);
 	if state == "Die":
 		gameOver = true	
 		
+# To prevent it from hitting again while rotating, hit it every 0.1 second. 
 func collision_cooltime():
 	canCollision = true
 
@@ -128,14 +138,14 @@ func create_timer (item_func, item_time) -> Timer:
 	timer.connect("timeout", self, item_func)
 	return timer
 
-# 1205 Hyoyeon Yu work
+# charge speed
 func take_speed(amount):
 	speed += amount
 	if speed > speedMax:
 		speed = speedMax
 	print("player picked a battery! Current speed is: ", speed)
 
-# 1205 Hyoyeon Yu work
+# charge 60 speed
 func _on_Battery_body_entered(body):
 	if !batterySound.is_playing():
 		batterySound.play()
@@ -144,7 +154,7 @@ func _on_Battery_body_entered(body):
 	yield(get_tree().create_timer(1),"timeout")
 	state = "Idle" 
 	
-# 1205 Hyoyeon Yu work
+# charge speed to 400
 func _on_Booster_body_entered(body):
 	if !boosterSound.is_playing():
 		boosterSound.play()	
@@ -155,7 +165,7 @@ func _on_Booster_body_entered(body):
 	state = "Booster"
 	yield(get_tree().create_timer(1),"timeout")
 	state = "Idle"
-
-# 1205 Hyoyeon Yu work
+	
+# game over if player collide with bomb
 func _on_Bomb_body_entered(body):
 	game_over()

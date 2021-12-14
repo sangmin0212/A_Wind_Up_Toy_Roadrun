@@ -1,8 +1,12 @@
+# code owner : Minho Jeong
+
 extends StaticBody2D
 
 var points = []
 onready var player = get_parent().get_parent().get_node("Player")
-onready var inGameGUI = get_parent().get_parent().get_node("InGameGUI")
+#onready var inGameGUI = get_parent().get_parent().get_node("InGameGUI")
+onready var inGameGUI = $"../../../IngameGUI"
+
 
 func update_points(start, end, width):
 	points.clear()

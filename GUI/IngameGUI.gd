@@ -1,5 +1,6 @@
-extends Node
+# code owner : Minho Jeong
 
+extends Node
 
 var sceneController
 var player

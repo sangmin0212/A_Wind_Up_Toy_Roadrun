@@ -1,3 +1,6 @@
+# code owner : Hyoyeon Yu
+# code sub owner : Minho Jeong
+
 extends Control
 
 var Main
@@ -20,9 +23,6 @@ func _on_Start_pressed():
 	Main.hide()
 	story[storyIndex].show()
 
-func _on_Exit_pressed():
-	get_tree().quit()
-
 
 func _on_Back_pressed():
 	Option.hide()
@@ -32,7 +32,7 @@ func _on_Back_pressed():
 func _on_Option_pressed():
 	Option.show()
 	Main.hide()
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), -10)
+	#AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), -10)
 	volumeSize = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master"))
 	volumeSize = (volumeSize - minV)/(maxV-minV) * 100
 	Option.get_node("VolumeSize").value =  volumeSize

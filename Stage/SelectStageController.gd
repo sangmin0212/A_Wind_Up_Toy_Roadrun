@@ -1,7 +1,10 @@
+# code owner : Sangmin Oh
+
 extends Node2D
 
 onready var sceneController = get_parent().get_node("SceneController")
 
+# depending on whether the stage is completed, lock or open the stage.
 func _ready():
 	var stageClear = sceneController.stageClear
 	for stage in stageClear:

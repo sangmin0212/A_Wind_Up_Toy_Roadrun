@@ -1,8 +1,7 @@
-# 
+# code owner : Sangmin Oh
+
 extends Node2D
 
-
-var lastStage = 0
 var gameAllClear = false
 
 const stageClear = {

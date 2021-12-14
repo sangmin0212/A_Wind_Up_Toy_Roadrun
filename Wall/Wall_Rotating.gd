@@ -1,11 +1,8 @@
+# code owner : Sangmin Oh
+
 extends StaticBody2D
 
-
-
-func _ready():
-	pass # Replace with function body.
-
-
+# rotate wall itself
 func _physics_process(delta):
 	rotate(PI/4 * delta)
 

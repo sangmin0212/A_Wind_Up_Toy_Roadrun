@@ -1,24 +1,33 @@
+# code owner : Sangmin Oh
+
 extends KinematicBody2D
 
 class_name Monster
 
-var monsterManager
-var isMonster = false
-var hitPlayer = false
-var target
+# Transform
 var velocity = Vector2.ZERO
 var speed = 220
 
+# State
+var isMonster = false
+var hitPlayer = false
 var gameOver = false
 var isDead = false
 
+# Other object
+var monsterManager
+var target
+
+# Animation
 onready var _animation_player = $AnimationPlayer
 var state = "Idle"
 
+# Sound
 onready var monsterAppear = $MonsterAppear
 onready var monsterDead = $MonsterDead
 onready var killPlayer = $KillPlayer
 	
+# Get the player's information and set the monster.
 func setting(_position, _velocity):
 	position = _position
 	velocity = _velocity
@@ -29,12 +38,15 @@ func _ready():
 	
 	
 func _physics_process(delta):
+	# update animation
 	update_animation()
+	
+	# monster will be moved toward player
 	velocity = velocity.normalized() * speed
 	var collision = move_and_collide(velocity*delta)
 	
 	if collision and !gameOver:
-		# if collide with player, kill the player!
+		# if collide with player, kill the player
 		if collision.collider.get_collision_layer_bit(0):
 			speed = 0
 			monsterManager.kill_player()
@@ -58,6 +70,6 @@ func update_animation():
 		_animation_player.play(state);
 	if state == "Die":
 		gameOver = true
-
+		
 func stop():
 	speed = 0

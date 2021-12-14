@@ -18,7 +18,7 @@
 [node name="Stage5" type="Node2D"]
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 661.262, 363.26 )
+position = Vector2( 660.14, 364.382 )
 texture = ExtResource( 7 )
 
 [node name="SceneController" parent="." instance=ExtResource( 12 )]
@@ -157,9 +157,9 @@ texture = ExtResource( 8 )
 
 [connection signal="body_entered" from="EndPoint" to="GameManager" method="_on_EndPoint_body_entered"]
 [connection signal="spawn_monster" from="GameManager" to="GameManager/MonsterManager" method="_on_GameManager_spawn_monster"]
-[connection signal="pressed" from="UI/GameClear/StageSelect" to="SceneController" method="_clear_stage" binds= [ "Stage6" ]]
 [connection signal="pressed" from="UI/GameClear/StageSelect" to="SceneController" method="_load_scene" binds= [ "Select Stage" ]]
-[connection signal="pressed" from="UI/GameClear/NextStage" to="SceneController" method="_clear_stage" binds= [ "Stage6" ]]
+[connection signal="pressed" from="UI/GameClear/StageSelect" to="SceneController" method="_clear_stage" binds= [ "Stage6" ]]
 [connection signal="pressed" from="UI/GameClear/NextStage" to="SceneController" method="_load_scene" binds= [ "Stage6" ]]
+[connection signal="pressed" from="UI/GameClear/NextStage" to="SceneController" method="_clear_stage" binds= [ "Stage6" ]]
 [connection signal="pressed" from="UI/GameOver/Retry" to="SceneController" method="_load_scene" binds= [ "Stage5" ]]
 [connection signal="pressed" from="UI/GameOver/StageSelect" to="SceneController" method="_load_scene" binds= [ "Select Stage" ]]
