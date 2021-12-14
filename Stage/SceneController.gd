@@ -4,6 +4,11 @@ extends Node2D
 var lastStage = 0
 var gameAllClear = false
 const stageClear = {"Stage1" : true, "Stage2" : false,"Stage3" : false,"Stage4" : false,"Stage5" : false,"Stage6" : false,}
+onready var audio_player = $BackgroundSound
+
+func _ready():
+	if audio_player != null:
+		audio_player.play()
 
 func _exit():
 	get_tree().quit()
@@ -13,7 +18,9 @@ func _load_scene(sceneName):
 
 func _clear_stage(stage):
 	stageClear[stage] = true
-	print(stageClear[stage])
+	for stage in stageClear:
+		print(stage)
+		print(stageClear[stage])
 
 func is_stage_clear():
 	for stage in stageClear:
@@ -22,9 +29,7 @@ func is_stage_clear():
 	gameAllClear = true
 	return gameAllClear
 
-func _input(event):
-	if Input.is_action_pressed("ui_right"):
-		for i in stageClear:
-			print(stageClear[i])
-	
 
+
+func _stage_clear(extra_arg_0):
+	pass # Replace with function body.

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Stage3,5.mp3-38af21b9d353562b4f655b48819e651a.mp3str"
+
+[deps]
+
+source_file="res://_Sound/cute/Stage3,5.mp3"
+dest_files=[ "res://.import/Stage3,5.mp3-38af21b9d353562b4f655b48819e651a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

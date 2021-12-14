@@ -11,6 +11,8 @@ func _on_Bomb_body_entered(body):
 	# reomve the object from the memory
 		play_effect_sound()
 		print("player picked a bomb!")
+		yield(get_tree().create_timer(1),"timeout")
+		queue_free()
 		
 func play_effect_sound():
 	if !audio_player.is_playing():

@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://_Image/Battery.png" type="Texture" id=1]
+[ext_resource path="res://_Sound/cute/Battery.wav" type="AudioStream" id=2]
+[ext_resource path="res://Interactable/Battery.gd" type="Script" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 12.2377
@@ -9,6 +11,7 @@ height = 58.0
 [node name="Battery" type="Area2D"]
 scale = Vector2( 1.2, 1.2 )
 collision_layer = 8
+script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 1, -1 )
@@ -19,3 +22,6 @@ texture = ExtResource( 1 )
 position = Vector2( 1, -1 )
 rotation = -0.109956
 shape = SubResource( 1 )
+
+[node name="BatterySound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/MonsterAppear.mp3-e5c03efed3ef51ccbde0f5e5c89eb4b1.mp3str"
+
+[deps]
+
+source_file="res://_Sound/cute/MonsterAppear.mp3"
+dest_files=[ "res://.import/MonsterAppear.mp3-e5c03efed3ef51ccbde0f5e5c89eb4b1.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

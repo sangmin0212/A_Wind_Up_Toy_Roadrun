@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Slowdown and Gameover.wav-d7f5af3add21846dbefaa95b59fff040.sample"
+
+[deps]
+
+source_file="res://_Sound/old/Slowdown and Gameover.wav"
+dest_files=[ "res://.import/Slowdown and Gameover.wav-d7f5af3add21846dbefaa95b59fff040.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

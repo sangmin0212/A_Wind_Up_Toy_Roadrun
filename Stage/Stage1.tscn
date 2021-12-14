@@ -1,92 +1,81 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://Interactable/Battery.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Interactable/Booster.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Interactable/EndPoint.tscn" type="PackedScene" id=4]
-[ext_resource path="res://_Image/Btn_Retry.png" type="Texture" id=5]
-[ext_resource path="res://Monster/MonsterManager.gd" type="Script" id=6]
-[ext_resource path="res://GameManager.gd" type="Script" id=7]
-[ext_resource path="res://GUI/IngameGUI.tscn" type="PackedScene" id=8]
-[ext_resource path="res://_Image/button2.png" type="Texture" id=9]
-[ext_resource path="res://Wall/Wall_Creater(mouse).gd" type="Script" id=10]
-[ext_resource path="res://Interactable/Bomb.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Wall/OutlineWall.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Interactable/Battery.gd" type="Script" id=13]
-[ext_resource path="res://_Image/BackGround.png" type="Texture" id=14]
-[ext_resource path="res://Stage/SceneController.tscn" type="PackedScene" id=15]
-[ext_resource path="res://_Image/Btn_NextStage.png" type="Texture" id=16]
-[ext_resource path="res://_Image/Btn_SelectStage.png" type="Texture" id=17]
+[ext_resource path="res://GameManager.gd" type="Script" id=1]
+[ext_resource path="res://Wall/Wall_Creater(mouse).gd" type="Script" id=2]
+[ext_resource path="res://Monster/MonsterManager.gd" type="Script" id=3]
+[ext_resource path="res://_Image/Btn_Retry.png" type="Texture" id=4]
+[ext_resource path="res://_Image/Btn_NextStage.png" type="Texture" id=5]
+[ext_resource path="res://_Image/Btn_SelectStage.png" type="Texture" id=6]
+[ext_resource path="res://_Image/BackGround.png" type="Texture" id=7]
+[ext_resource path="res://_Image/button2.png" type="Texture" id=8]
+[ext_resource path="res://Interactable/EndPoint.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Interactable/Battery.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=11]
+[ext_resource path="res://GUI/IngameGUI.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Stage/SceneController.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Wall/OutlineWall.tscn" type="PackedScene" id=14]
+[ext_resource path="res://_Sound/cute/Stage1,4.mp3" type="AudioStream" id=15]
 
 [node name="Stage1" type="Node2D"]
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 654.596, 372.817 )
-texture = ExtResource( 14 )
+position = Vector2( 659.091, 368.322 )
+texture = ExtResource( 7 )
 
-[node name="SceneController" parent="." instance=ExtResource( 15 )]
+[node name="SceneController" parent="." instance=ExtResource( 13 )]
 
-[node name="EndPoint" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1176, 92 )
+[node name="BackgroundSound" type="AudioStreamPlayer" parent="SceneController"]
+stream = ExtResource( 15 )
+
+[node name="EndPoint" parent="." instance=ExtResource( 9 )]
+position = Vector2( 1176, 610.414 )
 
 [node name="GameManager" type="Node2D" parent="."]
-script = ExtResource( 7 )
+script = ExtResource( 1 )
 
-[node name="Player" parent="GameManager" instance=ExtResource( 3 )]
+[node name="Player" parent="GameManager" instance=ExtResource( 11 )]
 position = Vector2( 136, 604 )
 
 [node name="MonsterManager" type="Node2D" parent="GameManager"]
-script = ExtResource( 6 )
+script = ExtResource( 3 )
 
 [node name="WallCreater" type="Node2D" parent="GameManager"]
-script = ExtResource( 10 )
+script = ExtResource( 2 )
 
 [node name="Battery" type="Node2D" parent="."]
 
-[node name="Battery" parent="Battery" instance=ExtResource( 1 )]
-position = Vector2( 467, 450 )
-script = ExtResource( 13 )
+[node name="Battery" parent="Battery" instance=ExtResource( 10 )]
+position = Vector2( 467, 580.353 )
 
-[node name="Battery2" parent="Battery" instance=ExtResource( 1 )]
-position = Vector2( 1141, 594 )
-script = ExtResource( 13 )
-
-[node name="Booster" type="Node2D" parent="."]
-
-[node name="Booster" parent="Booster" instance=ExtResource( 2 )]
-position = Vector2( 358, 269 )
-
-[node name="Bomb" type="Node2D" parent="."]
-
-[node name="Bomb" parent="Bomb" instance=ExtResource( 11 )]
-position = Vector2( 1038, 272 )
+[node name="Battery2" parent="Battery" instance=ExtResource( 10 )]
+position = Vector2( 860.816, 193.952 )
 
 [node name="Wall" type="Node2D" parent="."]
 position = Vector2( 1, 0 )
 
-[node name="OuterWall" parent="Wall" instance=ExtResource( 12 )]
+[node name="OuterWall" parent="Wall" instance=ExtResource( 14 )]
 position = Vector2( 654, 2.38419e-07 )
 scale = Vector2( 2.38511, -0.913662 )
 
-[node name="OuterWall2" parent="Wall" instance=ExtResource( 12 )]
+[node name="OuterWall2" parent="Wall" instance=ExtResource( 14 )]
 position = Vector2( 649, 720 )
 scale = Vector2( 2.38511, -0.913662 )
 
-[node name="OuterWall3" parent="Wall" instance=ExtResource( 12 )]
+[node name="OuterWall3" parent="Wall" instance=ExtResource( 14 )]
 position = Vector2( -0.625423, 430 )
 rotation = 1.57079
 scale = Vector2( 2.38511, -0.913662 )
 
-[node name="OuterWall4" parent="Wall" instance=ExtResource( 12 )]
+[node name="OuterWall4" parent="Wall" instance=ExtResource( 14 )]
 position = Vector2( 1279, 421 )
 rotation = 1.57079
 scale = Vector2( 2.38511, -0.913662 )
 
-[node name="IngameGUI" parent="." instance=ExtResource( 8 )]
+[node name="IngameGUI" parent="." instance=ExtResource( 12 )]
 margin_left = 653.151
-margin_top = -4.051
+margin_top = -6.87943
 margin_right = 653.151
-margin_bottom = 11.949
+margin_bottom = 9.12057
 
 [node name="UI" type="Control" parent="."]
 margin_right = 40.0
@@ -108,7 +97,7 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="UI/GameClear"]
 position = Vector2( -42.597, 82.784 )
 scale = Vector2( 0.514044, 0.498099 )
-texture = ExtResource( 14 )
+texture = ExtResource( 7 )
 
 [node name="StageSelect" type="TextureButton" parent="UI/GameClear"]
 margin_left = -228.597
@@ -116,7 +105,7 @@ margin_top = 107.784
 margin_right = 786.403
 margin_bottom = 409.784
 rect_scale = Vector2( 0.4, 0.4 )
-texture_normal = ExtResource( 17 )
+texture_normal = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -127,7 +116,7 @@ margin_top = -78.216
 margin_right = 800.403
 margin_bottom = 263.784
 rect_scale = Vector2( 0.4, 0.4 )
-texture_normal = ExtResource( 16 )
+texture_normal = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -145,7 +134,7 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="UI/GameOver"]
 position = Vector2( -42.597, 82.784 )
 scale = Vector2( 0.514044, 0.498099 )
-texture = ExtResource( 14 )
+texture = ExtResource( 7 )
 
 [node name="Retry" type="TextureButton" parent="UI/GameOver"]
 margin_left = -158.429
@@ -153,7 +142,7 @@ margin_top = -71.642
 margin_right = 461.571
 margin_bottom = 242.358
 rect_scale = Vector2( 0.4, 0.4 )
-texture_normal = ExtResource( 5 )
+texture_normal = ExtResource( 4 )
 
 [node name="StageSelect" type="TextureButton" parent="UI/GameOver"]
 margin_left = -235.429
@@ -161,7 +150,7 @@ margin_top = 108.358
 margin_right = 779.571
 margin_bottom = 410.358
 rect_scale = Vector2( 0.4, 0.4 )
-texture_normal = ExtResource( 17 )
+texture_normal = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -169,7 +158,7 @@ __meta__ = {
 [node name="AllStageClear" type="Sprite" parent="UI"]
 visible = false
 position = Vector2( 687.442, 336.379 )
-texture = ExtResource( 9 )
+texture = ExtResource( 8 )
 
 [connection signal="body_entered" from="EndPoint" to="GameManager" method="_on_EndPoint_body_entered"]
 [connection signal="spawn_monster" from="GameManager" to="GameManager/MonsterManager" method="_on_GameManager_spawn_monster"]
@@ -177,11 +166,9 @@ texture = ExtResource( 9 )
 [connection signal="body_entered" from="Battery/Battery" to="Battery/Battery" method="_on_Battery_body_entered"]
 [connection signal="body_entered" from="Battery/Battery2" to="GameManager/Player" method="_on_Battery_body_entered"]
 [connection signal="body_entered" from="Battery/Battery2" to="Battery/Battery2" method="_on_Battery_body_entered"]
-[connection signal="body_entered" from="Booster/Booster" to="GameManager/Player" method="_on_Booster_body_entered"]
-[connection signal="body_entered" from="Booster/Booster" to="Booster/Booster" method="_on_Booster_body_entered"]
-[connection signal="body_entered" from="Bomb/Bomb" to="GameManager/Player" method="_on_Bomb_body_entered"]
-[connection signal="body_entered" from="Bomb/Bomb" to="Bomb/Bomb" method="_on_Bomb_body_entered"]
 [connection signal="pressed" from="UI/GameClear/StageSelect" to="SceneController" method="_load_scene" binds= [ "Select Stage" ]]
+[connection signal="pressed" from="UI/GameClear/StageSelect" to="SceneController" method="_clear_stage" binds= [ "Stage2" ]]
 [connection signal="pressed" from="UI/GameClear/NextStage" to="SceneController" method="_load_scene" binds= [ "Stage2" ]]
+[connection signal="pressed" from="UI/GameClear/NextStage" to="SceneController" method="_clear_stage" binds= [ "Stage2" ]]
 [connection signal="pressed" from="UI/GameOver/Retry" to="SceneController" method="_load_scene" binds= [ "Stage1" ]]
 [connection signal="pressed" from="UI/GameOver/StageSelect" to="SceneController" method="_load_scene" binds= [ "Select Stage" ]]

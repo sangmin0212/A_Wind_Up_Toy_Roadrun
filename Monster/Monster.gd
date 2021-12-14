@@ -14,6 +14,10 @@ var isDead = false
 
 onready var _animation_player = $AnimationPlayer
 var state = "Idle"
+
+onready var monsterAppear = $MonsterAppear
+onready var monsterDead = $MonsterDead
+onready var killPlayer = $KillPlayer
 	
 func setting(_position, _velocity):
 	position = _position
@@ -22,6 +26,7 @@ func setting(_position, _velocity):
 func _ready():
 	look_at(position)
 	monsterManager = find_parent("MonsterManager")
+	
 	
 func _physics_process(delta):
 	update_sprite()
@@ -35,7 +40,8 @@ func _physics_process(delta):
 			monsterManager.kill_player()
 			state = "Kill"
 			get_node("CollisionShape2D").disabled = true
-			yield(get_tree().create_timer(1.5),"timeout")
+			killPlayer.play()
+			yield(get_tree().create_timer(1),"timeout")
 			gameOver = true
 		# if collide with wall, the monster will be destroyed
 		if collision.collider.get_collision_layer_bit(1):
@@ -43,6 +49,7 @@ func _physics_process(delta):
 			monsterManager.monster_dead()
 			speed = 0
 			state = "Die"
+			monsterDead.play()
 			yield(get_tree().create_timer(1),"timeout")
 			queue_free()
 
@@ -51,3 +58,6 @@ func update_sprite():
 		_animation_player.play(state);
 	if state == "Die":
 		gameOver = true
+
+func stop():
+	speed = 0

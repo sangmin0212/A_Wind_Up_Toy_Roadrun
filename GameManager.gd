@@ -38,13 +38,16 @@ func game_start():
 func game_over():
 	playerManager.game_over()
 	monsterTimer.stop()
+	monsterManager.stop_monster()
 	var GameOver = $"../UI/GameOver"
 	GameOver.visible = true
 	
 func stage_clear():	
 	playerManager.stage_clear()
 	monsterTimer.stop()
+	monsterManager.stop_monster()
 	sceneController._clear_stage(get_parent().name)
+	
 	print(get_parent().name)
 	if sceneController.is_stage_clear():
 		var AllStageClear = $"../UI/AllStageClear"

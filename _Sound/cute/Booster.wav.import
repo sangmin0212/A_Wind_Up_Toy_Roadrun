@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/Wall Creation.wav-1432281aac77faa6875fcb560d819e10.sample"
+path="res://.import/Booster.wav-bf1abfcf45056a71bf489aecfc9f7f67.sample"
 
 [deps]
 
-source_file="res://_Sound/Wall Creation.wav"
-dest_files=[ "res://.import/Wall Creation.wav-1432281aac77faa6875fcb560d819e10.sample" ]
+source_file="res://_Sound/cute/Booster.wav"
+dest_files=[ "res://.import/Booster.wav-bf1abfcf45056a71bf489aecfc9f7f67.sample" ]
 
 [params]
 

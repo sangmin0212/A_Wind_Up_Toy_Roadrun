@@ -107,14 +107,13 @@ tracks/0/keys = {
 }
 
 [node name="Player" type="KinematicBody2D"]
-rotation = 3.14159
 scale = Vector2( 0.8, 0.8 )
 collision_mask = 30
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 30, -0.000106812 )
-rotation = 1.5708
+position = Vector2( -22.1493, -0.000106812 )
+rotation = -1.5708
 scale = Vector2( 0.431, 0.431 )
 texture = ExtResource( 1 )
 flip_h = true
@@ -129,3 +128,7 @@ anims/Booster = SubResource( 3 )
 anims/Die = SubResource( 4 )
 anims/Idle = SubResource( 5 )
 anims/Stop = SubResource( 6 )
+
+[node name="reflectSound" type="AudioStreamPlayer" parent="."]
+
+[node name="DeadSound" type="AudioStreamPlayer" parent="."]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/WallReflect.mp3-5d56a1b24695df0f808b0e4a172fb1ca.mp3str"
+
+[deps]
+
+source_file="res://_Sound/cute/WallReflect.mp3"
+dest_files=[ "res://.import/WallReflect.mp3-5d56a1b24695df0f808b0e4a172fb1ca.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
