@@ -35,15 +35,6 @@ scale = Vector2( 2.002, 1.147 )
 texture = ExtResource( 7 )
 offset = Vector2( 62.8162, -4.06825 )
 
-[node name="TextureProgress" type="TextureProgress" parent="."]
-margin_left = -119.0
-margin_top = 115.0
-margin_right = 113.067
-margin_bottom = 219.0
-texture_under = ExtResource( 2 )
-texture_progress = ExtResource( 1 )
-fill_mode = 5
-
 [node name="TextureProgress2" type="TextureProgress" parent="."]
 margin_left = -526.0
 margin_top = 395.0
@@ -66,6 +57,7 @@ texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 3 )
 
 [node name="PauseMenu" type="Node2D" parent="."]
+pause_mode = 2
 
 [node name="Home" type="TextureButton" parent="PauseMenu"]
 pause_mode = 2
@@ -95,45 +87,53 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Infinite" type="Sprite" parent="."]
-visible = false
+[node name="IngameMenu" type="Node2D" parent="."]
+
+[node name="TextureProgress" type="TextureProgress" parent="IngameMenu"]
+margin_left = -119.0
+margin_top = 115.0
+margin_right = 113.067
+margin_bottom = 334.0
+texture_under = ExtResource( 2 )
+texture_progress = ExtResource( 1 )
+fill_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Infinite" type="Sprite" parent="IngameMenu"]
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( -365.15, 221.738 )
 scale = Vector2( 0.9, 0.9 )
 texture = ExtResource( 14 )
 offset = Vector2( 62.8162, -4.06825 )
 
-[node name="0" type="Sprite" parent="."]
-visible = false
+[node name="0" type="Sprite" parent="IngameMenu"]
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( -383.954, 220.235 )
 texture = ExtResource( 12 )
 offset = Vector2( 62.8162, -4.06825 )
 
-[node name="1" type="Sprite" parent="."]
-visible = false
+[node name="1" type="Sprite" parent="IngameMenu"]
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( -380.621, 220.235 )
 texture = ExtResource( 11 )
 offset = Vector2( 62.8162, -4.06825 )
 
-[node name="2" type="Sprite" parent="."]
-visible = false
+[node name="2" type="Sprite" parent="IngameMenu"]
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( -381.817, 225.071 )
 scale = Vector2( 1, 1.1 )
 texture = ExtResource( 13 )
 offset = Vector2( 62.8162, -4.06825 )
 
-[node name="3" type="Sprite" parent="."]
-visible = false
+[node name="3" type="Sprite" parent="IngameMenu"]
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( -381.817, 221.738 )
 texture = ExtResource( 10 )
 offset = Vector2( 62.8162, -4.06825 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-visible = false
 position = Vector2( -10, 30 )
 collision_layer = 2
 collision_mask = 5
