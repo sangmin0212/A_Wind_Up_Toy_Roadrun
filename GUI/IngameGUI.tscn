@@ -80,3 +80,4 @@ position = Vector2( 5, 158.333 )
 shape = SubResource( 1 )
 
 [connection signal="toggled" from="PauseButton" to="." method="_on_PauseButton_toggled"]
+[connection signal="pressed" from="Home" to="." method="_on_Home_pressed"]

@@ -6,9 +6,9 @@ var player
 var speedProgressBar
 
 func _ready():
-#	sceneController = get_parent().get_node("SceneController")
 	player = get_parent().get_node("GameManager").get_node("Player")
 	speedProgressBar = get_node("TextureProgress2")
+	sceneController = get_parent().get_node("SceneController")
 
 func _on_PauseButton_toggled(button_pressed):
 	if button_pressed:
@@ -26,3 +26,7 @@ func _process(delta):
 	else:
 		speedProgressBar.value = temp/ 200 * 100
 
+
+
+func _on_Home_pressed():
+	sceneController._load_scene("Main Scene")
