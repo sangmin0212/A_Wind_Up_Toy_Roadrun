@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://_Image/Btn_Stage2.png" type="Texture" id=1]
 [ext_resource path="res://Stage/Main Scene.gd" type="Script" id=2]
@@ -11,8 +11,9 @@
 [ext_resource path="res://_Image/Btn_Stage6.png" type="Texture" id=9]
 [ext_resource path="res://_Image/Btn_Stage3.png" type="Texture" id=10]
 [ext_resource path="res://_Image/Btn_Stage5.png" type="Texture" id=11]
-[ext_resource path="res://_Sound/cute/Stage3,5.mp3" type="AudioStream" id=12]
+[ext_resource path="res://_Sound/cute/StageSelect.mp3" type="AudioStream" id=12]
 [ext_resource path="res://_Image/Lock.png" type="Texture" id=13]
+[ext_resource path="res://_Image/Btn_SelectStage.png" type="Texture" id=14]
 
 [node name="Select Stage" type="Control"]
 anchor_right = 1.0
@@ -32,10 +33,15 @@ stream = ExtResource( 12 )
 [node name="SelectStageController" type="Node2D" parent="."]
 script = ExtResource( 5 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="BG" type="Sprite" parent="."]
 position = Vector2( 650.5, 364.5 )
 scale = Vector2( 0.525202, 0.508872 )
 texture = ExtResource( 7 )
+
+[node name="StageSelect" type="Sprite" parent="."]
+position = Vector2( 657, 154 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 14 )
 
 [node name="Stages" type="Control" parent="."]
 __meta__ = {
@@ -43,10 +49,10 @@ __meta__ = {
 }
 
 [node name="Stage1" type="TextureButton" parent="Stages"]
-margin_left = 120.0
-margin_top = 252.0
-margin_right = 1071.0
-margin_bottom = 675.0
+margin_left = 118.0
+margin_top = 342.0
+margin_right = 1069.0
+margin_bottom = 765.0
 rect_scale = Vector2( 0.3, 0.3 )
 texture_normal = ExtResource( 8 )
 __meta__ = {
@@ -58,10 +64,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 496.962
-margin_top = 253.94
-margin_right = 1527.96
-margin_bottom = 676.94
+margin_left = 494.962
+margin_top = 343.94
+margin_right = 1525.96
+margin_bottom = 766.94
 rect_scale = Vector2( 0.3, 0.3 )
 texture_normal = ExtResource( 1 )
 __meta__ = {
@@ -74,10 +80,10 @@ position = Vector2( 504.43, 194.78 )
 texture = ExtResource( 13 )
 
 [node name="Stage3" type="TextureButton" parent="Stages"]
-margin_left = 878.671
-margin_top = 253.614
-margin_right = 1836.67
-margin_bottom = 676.614
+margin_left = 876.671
+margin_top = 343.614
+margin_right = 1834.67
+margin_bottom = 766.614
 rect_scale = Vector2( 0.3, 0.3 )
 texture_normal = ExtResource( 10 )
 __meta__ = {
@@ -90,10 +96,10 @@ position = Vector2( 504.43, 194.78 )
 texture = ExtResource( 13 )
 
 [node name="Stage4" type="TextureButton" parent="Stages"]
-margin_left = 121.864
-margin_top = 438.611
-margin_right = 1122.86
-margin_bottom = 861.611
+margin_left = 119.864
+margin_top = 528.611
+margin_right = 1120.86
+margin_bottom = 951.611
 rect_scale = Vector2( 0.3, 0.3 )
 texture_normal = ExtResource( 6 )
 __meta__ = {
@@ -106,10 +112,10 @@ position = Vector2( 504.43, 194.78 )
 texture = ExtResource( 13 )
 
 [node name="Stage5" type="TextureButton" parent="Stages"]
-margin_left = 501.95
-margin_top = 441.975
-margin_right = 1471.95
-margin_bottom = 864.975
+margin_left = 499.95
+margin_top = 531.975
+margin_right = 1469.95
+margin_bottom = 954.975
 rect_scale = Vector2( 0.3, 0.3 )
 texture_normal = ExtResource( 11 )
 __meta__ = {
@@ -122,10 +128,10 @@ position = Vector2( 504.43, 194.78 )
 texture = ExtResource( 13 )
 
 [node name="Stage6" type="TextureButton" parent="Stages"]
-margin_left = 882.035
-margin_top = 441.974
-margin_right = 1837.03
-margin_bottom = 864.974
+margin_left = 880.035
+margin_top = 531.974
+margin_right = 1835.03
+margin_bottom = 954.974
 rect_scale = Vector2( 0.3, 0.3 )
 texture_normal = ExtResource( 9 )
 __meta__ = {
@@ -138,11 +144,11 @@ position = Vector2( 504.43, 194.78 )
 texture = ExtResource( 13 )
 
 [node name="Back" type="TextureButton" parent="."]
-margin_left = 1039.0
-margin_top = 30.0
+margin_left = 1090.0
+margin_top = 31.0
 margin_right = 1772.0
 margin_bottom = 341.0
-rect_scale = Vector2( 0.3, 0.3 )
+rect_scale = Vector2( 0.2, 0.2 )
 texture_normal = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false

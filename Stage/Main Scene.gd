@@ -2,6 +2,8 @@ extends Control
 
 var Main
 var Option
+var story = []
+var storyIndex = 0
 var volumeSize
 var maxV = 5
 var minV = -50
@@ -9,12 +11,14 @@ var minV = -50
 func _ready():
 	Main = $"Main"
 	Option = $"Option"
-
-func _goto_next_level():
-	get_tree().change_scene("res://Stage/Stage1.tscn")
+	story.append($GameStory_1)
+	story.append($GameStory_2)
+	story.append($GameStory_3)
+	story.append($GameStory_4)
 
 func _on_Start_pressed():
-	_goto_next_level();
+	Main.hide()
+	story[storyIndex].show()
 
 func _on_Exit_pressed():
 	get_tree().quit()
@@ -39,3 +43,10 @@ func _on_HSlider_value_changed(value):
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), volumeSize)
 	if value == 0:
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), -100)
+
+
+func _on_Next_pressed():
+	story[storyIndex].hide()
+	storyIndex += 1
+	story[storyIndex].show()
+	

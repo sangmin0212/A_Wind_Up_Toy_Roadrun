@@ -179,7 +179,7 @@ position = Vector2( 759.334, 441.452 )
 texture = ExtResource( 6 )
 
 [node name="allStageClear" type="Sprite" parent="UI/AllStageClear"]
-position = Vector2( 687.442, 336.379 )
+position = Vector2( 654, 339 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 17 )
 
