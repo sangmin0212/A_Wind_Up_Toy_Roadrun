@@ -4,10 +4,10 @@ extends StaticBody2D
 
 var points = []
 onready var player = get_parent().get_parent().get_node("Player")
-#onready var inGameGUI = get_parent().get_parent().get_node("InGameGUI")
 onready var inGameGUI = $"../../../IngameGUI"
 
 
+# Calculate four points and draw wall
 func update_points(start, end, width):
 	points.clear()
 	points.append(start + (end - start).rotated(PI/2).normalized() * width)
@@ -28,13 +28,3 @@ func update_points(start, end, width):
 # when release mouse
 func enable_collision():
 	get_node("OuterCollisionPolygon2D").disabled = false
-	
-func _on_Area2D_body_exited(body):
-	if(body.name == "Player"):
-		print("overlap end")
-		get_node("OuterCollisionPolygon2D").disabled = false
-
-func _on_Area2D_body_entered(body):
-	if(body.name == "Player"):
-		print("overlap start")
-		get_node("OuterCollisionPolygon2D").disabled = true

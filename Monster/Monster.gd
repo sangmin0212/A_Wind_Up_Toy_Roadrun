@@ -24,7 +24,6 @@ var state = "Idle"
 
 # Sound
 onready var monsterAppear = $MonsterAppear
-onready var monsterDead = $MonsterDead
 onready var killPlayer = $KillPlayer
 	
 # Get the player's information and set the monster.
@@ -53,7 +52,6 @@ func _physics_process(delta):
 			state = "Kill"
 			get_node("CollisionShape2D").disabled = true
 			killPlayer.play()
-			yield(get_tree().create_timer(1),"timeout")
 			gameOver = true
 		# if collide with wall, the monster will be destroyed
 		if collision.collider.get_collision_layer_bit(1):
@@ -61,8 +59,6 @@ func _physics_process(delta):
 			monsterManager.monster_dead()
 			speed = 0
 			state = "Die"
-			monsterDead.play()
-			yield(get_tree().create_timer(1),"timeout")
 			queue_free()
 
 func update_animation():

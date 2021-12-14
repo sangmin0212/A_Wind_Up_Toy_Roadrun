@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://GameManager.gd" type="Script" id=1]
 [ext_resource path="res://Wall/Wall_Creater(mouse).gd" type="Script" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Stage/SceneController.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Wall/OutlineWall.tscn" type="PackedScene" id=14]
 [ext_resource path="res://_Sound/cute/Stage1,4.mp3" type="AudioStream" id=15]
+[ext_resource path="res://_Sound/cute/MonsterDead.mp3" type="AudioStream" id=16]
 
 [node name="Stage1" type="Node2D"]
 
@@ -39,8 +40,12 @@ position = Vector2( 136, 604 )
 [node name="MonsterManager" type="Node2D" parent="GameManager"]
 script = ExtResource( 3 )
 
+[node name="MonsterDead" type="AudioStreamPlayer" parent="GameManager/MonsterManager"]
+stream = ExtResource( 16 )
+
 [node name="WallCreater" type="Node2D" parent="GameManager"]
 script = ExtResource( 2 )
+wallLimit = 100
 
 [node name="Battery" type="Node2D" parent="."]
 

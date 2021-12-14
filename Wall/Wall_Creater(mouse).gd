@@ -1,3 +1,5 @@
+# code owner : Minho Jeong
+
 extends Node2D
 
 var wall_node = load("res://Wall/DrawingWall.tscn")
@@ -17,13 +19,16 @@ var endPoint = Vector2()
 
 var wallCreatingTimer
 var IngameGUI
+var wallNum
 var Player
 var progressValue = 0
 
+# Get other nodes and set wall limit cound UI
 func _ready():
 	IngameGUI = get_parent().get_parent().get_node("IngameGUI")
 	Player = get_parent().get_node("Player")
 	wallCreatingTimer = create_timer("wallCreatingTimer",WallCreatingTime)
+	IngameGUI.setWallLimitUI(wallLimit)
 
 func create_timer (item_func, item_time) -> Timer:
 	var timer = Timer.new()    
@@ -35,11 +40,13 @@ func create_timer (item_func, item_time) -> Timer:
 func wallCreatingTimer():
 	isPossibleToMakeWall = true
 
+# Check if it is UI area
 func isUIArea(pos):
 	if pos.x >= 548 && pos.x <=761 && pos.y >=9 && pos.y <= 98:
 		return true
 	return false
 
+# Get touch input(touch input is regarded as click input)
 func _input(event):
 	if !Player.isGameEnded():
 		if isPossibleToMakeWall:
@@ -55,9 +62,13 @@ func _input(event):
 						isClicked = false
 						isCreated = false
 						endPoint = get_global_mouse_position()
+						if wallLimit < 10:
+							IngameGUI.changeWallNumSprite(wallLimit-walls.size())
+						
 						walls[-1].enable_collision()
 						print("left click unpress")
 
+# Drawing wall at every frame
 func _process(_delta):
 	if !Player.isGameEnded():
 		if isPossibleToMakeWall:

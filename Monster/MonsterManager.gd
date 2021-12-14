@@ -15,6 +15,9 @@ var monsterIs = false
 var monsterDead = false
 var killPlayer = false
 
+# Sound
+onready var monsterDeadSound = $MonsterDead
+
 # if GameManager.monsterTimer time is over, spawn monster
 func _on_GameManager_spawn_monster(_playerPos, _playerVelocity):
 	monster = monsters.instance()
@@ -36,3 +39,7 @@ func kill_player():
 func monster_dead():
 	gameManager.start_monster_timer()
 	monsterIs = false
+	if !monsterDeadSound.is_playing():
+		monsterDeadSound.play()
+	yield(get_tree().create_timer(0.8),"timeout")
+	monsterDeadSound.stop()

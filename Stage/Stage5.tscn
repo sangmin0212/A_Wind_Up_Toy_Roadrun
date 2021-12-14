@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://GameManager.gd" type="Script" id=1]
 [ext_resource path="res://Wall/Wall_Creater(mouse).gd" type="Script" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Stage/SceneController.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Wall/OutlineWall.tscn" type="PackedScene" id=13]
 [ext_resource path="res://_Sound/cute/Stage2,5.mp3" type="AudioStream" id=14]
+[ext_resource path="res://_Sound/cute/MonsterDead.mp3" type="AudioStream" id=15]
 
 [node name="Stage5" type="Node2D"]
 
@@ -38,6 +39,9 @@ rotation = -0.261799
 
 [node name="MonsterManager" type="Node2D" parent="GameManager"]
 script = ExtResource( 3 )
+
+[node name="MonsterDead" type="AudioStreamPlayer" parent="GameManager/MonsterManager"]
+stream = ExtResource( 15 )
 
 [node name="WallCreater" type="Node2D" parent="GameManager"]
 script = ExtResource( 2 )
@@ -157,9 +161,9 @@ texture = ExtResource( 8 )
 
 [connection signal="body_entered" from="EndPoint" to="GameManager" method="_on_EndPoint_body_entered"]
 [connection signal="spawn_monster" from="GameManager" to="GameManager/MonsterManager" method="_on_GameManager_spawn_monster"]
-[connection signal="pressed" from="UI/GameClear/StageSelect" to="SceneController" method="_load_scene" binds= [ "Select Stage" ]]
 [connection signal="pressed" from="UI/GameClear/StageSelect" to="SceneController" method="_clear_stage" binds= [ "Stage6" ]]
-[connection signal="pressed" from="UI/GameClear/NextStage" to="SceneController" method="_load_scene" binds= [ "Stage6" ]]
+[connection signal="pressed" from="UI/GameClear/StageSelect" to="SceneController" method="_load_scene" binds= [ "Select Stage" ]]
 [connection signal="pressed" from="UI/GameClear/NextStage" to="SceneController" method="_clear_stage" binds= [ "Stage6" ]]
+[connection signal="pressed" from="UI/GameClear/NextStage" to="SceneController" method="_load_scene" binds= [ "Stage6" ]]
 [connection signal="pressed" from="UI/GameOver/Retry" to="SceneController" method="_load_scene" binds= [ "Stage5" ]]
 [connection signal="pressed" from="UI/GameOver/StageSelect" to="SceneController" method="_load_scene" binds= [ "Select Stage" ]]

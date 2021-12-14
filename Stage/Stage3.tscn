@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://GameManager.gd" type="Script" id=1]
 [ext_resource path="res://Wall/Wall_Creater(mouse).gd" type="Script" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://Stage/SceneController.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Wall/OutlineWall.tscn" type="PackedScene" id=17]
 [ext_resource path="res://_Sound/cute/MenuSelect.mp3" type="AudioStream" id=18]
+[ext_resource path="res://_Sound/cute/MonsterDead.mp3" type="AudioStream" id=19]
 
 [node name="Stage3" type="Node2D"]
 
@@ -43,8 +44,12 @@ rotation = -1.5708
 [node name="MonsterManager" type="Node2D" parent="GameManager"]
 script = ExtResource( 3 )
 
+[node name="MonsterDead" type="AudioStreamPlayer" parent="GameManager/MonsterManager"]
+stream = ExtResource( 19 )
+
 [node name="WallCreater" type="Node2D" parent="GameManager"]
 script = ExtResource( 2 )
+wallLimit = 100
 
 [node name="Battery" type="Node2D" parent="."]
 
