@@ -114,7 +114,7 @@ func _physics_process(delta):
 	# if speed == 0, player, determined that the player is dead.
 	if speed <= 0:
 		print("Player died!!!")
-		get_tree().paused = true
+		#get_tree().paused = true
 	
 	# If collide with booster, decrease speed until it returns to 200.
 	if isBooster and speed > 200:

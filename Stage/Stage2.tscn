@@ -54,7 +54,7 @@ wallLimit = 100
 position = Vector2( 333.365, 341.31 )
 
 [node name="Battery2" parent="Battery" instance=ExtResource( 10 )]
-position = Vector2( 823.84, 123.605 )
+position = Vector2( 859, 142 )
 
 [node name="Battery3" parent="Battery" instance=ExtResource( 10 )]
 position = Vector2( 1060.82, 316.04 )

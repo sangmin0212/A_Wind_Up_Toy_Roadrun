@@ -90,9 +90,9 @@ __meta__ = {
 [node name="IngameMenu" type="Node2D" parent="."]
 
 [node name="TextureProgress" type="TextureProgress" parent="IngameMenu"]
-margin_left = -119.0
+margin_left = -115.738
 margin_top = 115.0
-margin_right = 113.067
+margin_right = 103.262
 margin_bottom = 334.0
 texture_under = ExtResource( 2 )
 texture_progress = ExtResource( 1 )
