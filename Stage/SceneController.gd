@@ -33,3 +33,11 @@ func is_stage_clear():
 
 func _stage_clear(extra_arg_0):
 	pass # Replace with function body.
+
+
+func _on_Option_pressed():
+	pass # Replace with function body.
+
+
+func _on_Back_pressed():
+	pass # Replace with function body.

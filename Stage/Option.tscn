@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://_Image/Btn_Back.png" type="Texture" id=1]
+[ext_resource path="res://_Image/BackGround.png" type="Texture" id=2]
+[ext_resource path="res://_Image/Volume.png" type="Texture" id=3]
+[ext_resource path="res://_Image/Option.png" type="Texture" id=4]
+
+[node name="Option" type="Node2D"]
+
+[node name="BG" type="Sprite" parent="."]
+position = Vector2( 646.5, 358 )
+scale = Vector2( 0.504425, 0.475285 )
+texture = ExtResource( 2 )
+
+[node name="Option" type="Sprite" parent="."]
+position = Vector2( 642, 175 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 4 )
+
+[node name="Volume" type="Sprite" parent="."]
+position = Vector2( 656, 402 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 3 )
+
+[node name="HSlider" type="HSlider" parent="."]
+margin_left = 474.0
+margin_top = 426.0
+margin_right = 854.0
+margin_bottom = 570.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Back" type="TextureButton" parent="."]
+margin_left = 1092.0
+margin_top = 30.0
+margin_right = 1825.0
+margin_bottom = 341.0
+rect_scale = Vector2( 0.2, 0.2 )
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 1 )
+texture_hover = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
