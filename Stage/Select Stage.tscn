@@ -12,25 +12,7 @@
 [ext_resource path="res://_Image/Btn_Stage3.png" type="Texture" id=10]
 [ext_resource path="res://_Image/Btn_Stage5.png" type="Texture" id=11]
 [ext_resource path="res://_Sound/cute/Stage3,5.mp3" type="AudioStream" id=12]
-
-[sub_resource type="GDScript" id=1]
-script/source = "extends TextureButton
-
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = \"text\"
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-"
+[ext_resource path="res://_Image/Lock.png" type="Texture" id=13]
 
 [node name="Select Stage" type="Control"]
 anchor_right = 1.0
@@ -82,10 +64,14 @@ margin_right = 1527.96
 margin_bottom = 676.94
 rect_scale = Vector2( 0.3, 0.3 )
 texture_normal = ExtResource( 1 )
-script = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Lock" type="Sprite" parent="Stages/Stage2"]
+visible = false
+position = Vector2( 504.43, 194.78 )
+texture = ExtResource( 13 )
 
 [node name="Stage3" type="TextureButton" parent="Stages"]
 margin_left = 878.671
@@ -98,6 +84,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Lock" type="Sprite" parent="Stages/Stage3"]
+visible = false
+position = Vector2( 504.43, 194.78 )
+texture = ExtResource( 13 )
+
 [node name="Stage4" type="TextureButton" parent="Stages"]
 margin_left = 121.864
 margin_top = 438.611
@@ -108,6 +99,11 @@ texture_normal = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Lock" type="Sprite" parent="Stages/Stage4"]
+visible = false
+position = Vector2( 504.43, 194.78 )
+texture = ExtResource( 13 )
 
 [node name="Stage5" type="TextureButton" parent="Stages"]
 margin_left = 501.95
@@ -120,6 +116,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Lock" type="Sprite" parent="Stages/Stage5"]
+visible = false
+position = Vector2( 504.43, 194.78 )
+texture = ExtResource( 13 )
+
 [node name="Stage6" type="TextureButton" parent="Stages"]
 margin_left = 882.035
 margin_top = 441.974
@@ -130,6 +131,11 @@ texture_normal = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Lock" type="Sprite" parent="Stages/Stage6"]
+visible = false
+position = Vector2( 504.43, 194.78 )
+texture = ExtResource( 13 )
 
 [node name="Back" type="TextureButton" parent="."]
 margin_left = 1039.0
