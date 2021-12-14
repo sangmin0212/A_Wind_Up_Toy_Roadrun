@@ -28,6 +28,7 @@ var boosterTimer
 var isBooster = false
 
 # Animation
+onready var _animated_sprite = $AnimatedSprite
 onready var _animation_player = $AnimationPlayer
 var state = "Stop"
 var isGameEnded = false
@@ -47,10 +48,9 @@ func _ready():
 	# set first direction using player rotation
 	velocity = Vector2(cos(rotation),sin(rotation))
 	collisionTimer = create_timer("collision_cooltime", 0.1)
-
+	_animated_sprite.play("01_Idle")
 func game_start():
 	speed = 200
-	state = "Idle"
 	
 func stage_clear():
 	speed = 0	
@@ -88,6 +88,11 @@ func _physics_process(delta):
 		if i == 5:
 			i = 0
 			isturn = false
+	
+	if isturn:
+		_animated_sprite.play("02_Collide")
+		yield(get_tree().create_timer(1),"timeout")
+		_animated_sprite.play("01_Idle")
 	
 	# if wind-up toy collide with wall, change move direction
 	if collision and canCollision:
