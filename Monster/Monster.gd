@@ -29,7 +29,7 @@ func _ready():
 	
 	
 func _physics_process(delta):
-	update_sprite()
+	update_animation()
 	velocity = velocity.normalized() * speed
 	var collision = move_and_collide(velocity*delta)
 	
@@ -53,7 +53,7 @@ func _physics_process(delta):
 			yield(get_tree().create_timer(1),"timeout")
 			queue_free()
 
-func update_sprite():
+func update_animation():
 	if _animation_player.get_current_animation() != state:
 		_animation_player.play(state);
 	if state == "Die":

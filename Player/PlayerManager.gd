@@ -65,7 +65,7 @@ func isGameEnded():
 func _physics_process(delta):
 	# update animation
 	if !gameOver:
-		update_sprite()
+		update_animation()
 		
 	# player move itself
 	if speed == 0:
@@ -87,17 +87,16 @@ func _physics_process(delta):
 		collisionTimer.start()
 		reflectSound.play()
 		canCollision = false
+		isturn = true
+
 		var reflect = collision.remainder.bounce(collision.normal)
 		# calculate reflect_angle(using 2 vector). using rotate in _physics_process for rotate smootly
 		reflect_angle = velocity.angle_to(reflect)
-		# if reflect_angle is 3.14159...(180 degree) it didn't change well
-		isturn = true
-		# move base on bounce vector
 		velocity = velocity.bounce(collision.normal)
 		move_and_collide(reflect)
 		
 	
-	# 1205 효연 추가
+	# 1205 Hyoyeon Yu work
 	speed -= 10 * delta
 	
 	if speed <= 0:
@@ -111,7 +110,7 @@ func _physics_process(delta):
 			isBooster = false
 
 
-func update_sprite():
+func update_animation():
 	if _animation_player.get_current_animation() != state:
 		_animation_player.play(state);
 	if state == "Die":
@@ -129,14 +128,14 @@ func create_timer (item_func, item_time) -> Timer:
 	timer.connect("timeout", self, item_func)
 	return timer
 
-# 1205 효연 추가
+# 1205 Hyoyeon Yu work
 func take_speed(amount):
 	speed += amount
 	if speed > speedMax:
 		speed = speedMax
 	print("player picked a battery! Current speed is: ", speed)
 
-
+# 1205 Hyoyeon Yu work
 func _on_Battery_body_entered(body):
 	if !batterySound.is_playing():
 		batterySound.play()
@@ -144,7 +143,8 @@ func _on_Battery_body_entered(body):
 	state = "Battery"
 	yield(get_tree().create_timer(1),"timeout")
 	state = "Idle" 
-
+	
+# 1205 Hyoyeon Yu work
 func _on_Booster_body_entered(body):
 	if !boosterSound.is_playing():
 		boosterSound.play()	
@@ -156,5 +156,6 @@ func _on_Booster_body_entered(body):
 	yield(get_tree().create_timer(1),"timeout")
 	state = "Idle"
 
+# 1205 Hyoyeon Yu work
 func _on_Bomb_body_entered(body):
 	game_over()
